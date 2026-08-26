@@ -4,6 +4,15 @@ const TRIP = window.TRIP;
 const CH_NO = { highway: "01", shack: "02", sunset: "03", tito: "04", birthday: "05" };
 const SEAT_CODE = ["1A", "1B", "1C", "1D", "1E"];
 const ME_KEY = "airChaloSeat";
+const STAMP_KEY = "airChaloStamps";
+const ML_KEY = "airChaloML";
+const STAMP_META = [
+  { id: "boarded", icon: "✈️" },
+  { id: "channel", icon: "📺" },
+  { id: "day", icon: "🗺️" },
+  { id: "friend", icon: "🕶️" },
+  { id: "ping", icon: "🔔" }
+];
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -17,7 +26,62 @@ let current = null;
 let langFilter = "all";
 let dayIndex = 0;
 let paTimer = 0;
+let mlIndex = 0;
 let myFriendId = localStorage.getItem(ME_KEY) || "";
+if (!TRIP.friends.some((f) => f.id === myFriendId)) myFriendId = "";
+
+function loadStamps() {
+  try { return JSON.parse(localStorage.getItem(STAMP_KEY) || "{}"); } catch (e) { return {}; }
+}
+function saveStamps(s) { localStorage.setItem(STAMP_KEY, JSON.stringify(s)); }
+function earnStamp(id) {
+  const s = loadStamps();
+  if (s[id]) return;
+  s[id] = true;
+  saveStamps(s);
+  renderStamps();
+  const n = Object.keys(s).length;
+  toast(`Passport stamp ${n}/5`);
+  if (n >= 5) {
+    confetti();
+    toast("Passport complete. Duty-free unlocked.");
+    dropStickers();
+  }
+}
+function renderStamps() {
+  const el = $("#stamps-hud");
+  if (!el) return;
+  const s = loadStamps();
+  el.innerHTML = STAMP_META.map((m) => `<i class="${s[m.id] ? "on" : ""}">${m.icon}</i>`).join("");
+}
+
+function confetti() {
+  const layer = $("#confetti");
+  if (!layer) return;
+  const bits = ["🎉", "🌴", "🥥", "✈️", "🎂", "🪩"];
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement("i");
+    p.textContent = bits[i % bits.length];
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = 1.1 + Math.random() + "s";
+    p.style.fontSize = 12 + Math.random() * 14 + "px";
+    layer.appendChild(p);
+    setTimeout(() => p.remove(), 1800);
+  }
+}
+
+function dropStickers() {
+  const host = $("#pass-stickers");
+  if (!host || host.childElementCount) return;
+  ["🌴", "😎", "🎂"].forEach((e, i) => {
+    const s = document.createElement("span");
+    s.textContent = e;
+    s.style.left = 18 + i * 28 + "%";
+    s.style.top = 12 + (i % 2) * 30 + "%";
+    s.style.transform = `rotate(${-12 + i * 10}deg)`;
+    host.appendChild(s);
+  });
+}
 
 const PA = [
   "Cabin crew, prepare for takeoff. Aux is armed.",
@@ -28,7 +92,11 @@ const PA = [
   "Goa time is the only time that matters in this cabin.",
   "Keep your seatbelt fastened until Kareem blows the candles.",
   "Connecting flight: Highway to Tito’s, with a sunset layover.",
-  "Hindi. Punjabi. English. No algorithm. No mercy."
+  "Kareem in 1A. Cake in the overhead. Do not eat it yet.",
+  "Sushant has the aux. Resistance is Ilahi.",
+  "Vinay is flying the scooter. This aircraft is a metaphor.",
+  "Lekhana has already vetoed two shacks from the air.",
+  "Ranjana: please look at the camera once. Once."
 ];
 
 function me() {
@@ -164,6 +232,8 @@ function setChannel(id) {
   loadSong(song, liveClock ? offset : 0, true);
   playing = true;
   syncPlayBtn();
+  earnStamp("channel");
+  if (id === "birthday") confetti();
 }
 
 function syncPlayBtn() {
@@ -262,7 +332,7 @@ function tickClocks() {
 function renderSeatmap() {
   $("#seatmap").innerHTML = TRIP.friends.map((f, i) => `
     <button type="button" class="seat-btn ${myFriendId === f.id ? "on" : ""}" data-id="${f.id}">
-      <small>${SEAT_CODE[i]}</small>${esc(f.emoji)}
+      <small>${SEAT_CODE[i]}</small><b>${f.emoji}</b><em>${esc(f.name)}</em>
     </button>`).join("");
   $$("#seatmap .seat-btn").forEach((b) => {
     b.onclick = () => {
@@ -299,12 +369,90 @@ function renderChannels() {
 
 function renderSeats() {
   $("#seats").innerHTML = TRIP.friends.map((f, i) => `
-    <div class="seat ${f.id === myFriendId ? "me" : ""}">
+    <button type="button" class="seat ${f.id === myFriendId ? "me" : ""}" data-id="${f.id}">
       <div class="em">${f.emoji}</div>
       <div class="nm">${esc(f.name)}</div>
       <div class="nk">${esc(f.nick)} · ${SEAT_CODE[i]}</div>
-      <div class="tt">${esc(f.title)} · ${esc(f.power)}</div>
-    </div>`).join("");
+      <div class="tt">${esc(f.title)}</div>
+    </button>`).join("");
+  $$("#seats .seat").forEach((b) => {
+    b.onclick = () => openDossier(b.dataset.id);
+  });
+}
+
+function openDossier(id) {
+  const f = TRIP.friends.find((x) => x.id === id);
+  if (!f) return;
+  earnStamp("friend");
+  const root = $("#dossier");
+  root.classList.remove("hidden");
+  root.innerHTML = `<div class="dossier-card">
+    <p class="sec-h">${f.emoji} SEAT FILE</p>
+    <h3>${esc(f.name)}</h3>
+    <p>${esc(f.nick)} · ${esc(f.title)}</p>
+    <p class="q">“${esc(f.quote)}”</p>
+    <p>Superpower: ${esc(f.power)}</p>
+    <p>Packed: ${esc(f.packed)}</p>
+    <button class="board-btn" type="button" id="dos-close">Close</button>
+  </div>`;
+  root.onclick = (e) => { if (e.target === root) root.classList.add("hidden"); };
+  $("#dos-close").onclick = () => root.classList.add("hidden");
+}
+
+function renderChat() {
+  const log = $("#chat-log");
+  if (!log) return;
+  log.innerHTML = "";
+  TRIP.chat.forEach((m, i) => {
+    setTimeout(() => {
+      const f = TRIP.friends.find((x) => x.id === m.from);
+      const div = document.createElement("div");
+      div.className = "bubble" + (m.from === myFriendId ? " me" : "");
+      div.innerHTML = `<span class="who">${esc(f ? f.name : m.from)}</span>${esc(m.text)}`;
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
+    }, 400 * i);
+  });
+}
+
+function sendSticker() {
+  const f = me();
+  if (!f) { toast("Pick a seat so we know who you are"); return; }
+  const stickers = ["🥥", "🛵", "🎂", "🪩", "🍋", "📸", "🎧"];
+  const s = stickers[Math.floor(Math.random() * stickers.length)];
+  const log = $("#chat-log");
+  const div = document.createElement("div");
+  div.className = "bubble me";
+  div.innerHTML = `<span class="who">${esc(f.name)}</span>${s} sent from seat ${SEAT_CODE[TRIP.friends.findIndex((x) => x.id === f.id)]}`;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+  toast(`${f.name} dropped a ${s}`);
+}
+
+function mlVotes() {
+  try { return JSON.parse(localStorage.getItem(ML_KEY) || "{}"); } catch (e) { return {}; }
+}
+function renderML() {
+  const prompts = TRIP.mostLikely;
+  const prompt = prompts[mlIndex % prompts.length];
+  $("#ml-prompt").textContent = prompt;
+  const votes = mlVotes()[prompt] || {};
+  const tally = {};
+  Object.values(votes).forEach((id) => { tally[id] = (tally[id] || 0) + 1; });
+  $("#ml-people").innerHTML = TRIP.friends.map((f) => `
+    <button type="button" data-id="${f.id}" class="${votes[myFriendId] === f.id ? "on" : ""}">
+      ${f.emoji} ${esc(f.name)}<small>${tally[f.id] || 0}</small>
+    </button>`).join("");
+  $$("#ml-people button").forEach((b) => {
+    b.onclick = () => {
+      if (!myFriendId) { toast("Board as yourself first"); return; }
+      const all = mlVotes();
+      all[prompt] = all[prompt] || {};
+      all[prompt][myFriendId] = b.dataset.id;
+      localStorage.setItem(ML_KEY, JSON.stringify(all));
+      renderML();
+    };
+  });
 }
 
 function renderDays() {
@@ -312,7 +460,7 @@ function renderDays() {
     `<button type="button" data-i="${i}" class="${i === dayIndex ? "on" : ""}">${d.date}</button>`
   ).join("");
   $$("#day-switch button").forEach((b) => {
-    b.onclick = () => { dayIndex = +b.dataset.i; renderDays(); };
+    b.onclick = () => { dayIndex = +b.dataset.i; renderDays(); earnStamp("day"); };
   });
   const d = TRIP.days[dayIndex];
   $("#safety-card").innerHTML = `
@@ -373,10 +521,16 @@ function board() {
       ov.classList.add("hidden");
       $("#gate").classList.add("hidden");
       $("#cabin").classList.remove("hidden");
+      $("#btn-ping").classList.remove("hidden");
       $("#pass").classList.remove("tear");
       window.scrollTo(0, 0);
       cyclePA();
       syncPass();
+      renderChat();
+      renderML();
+      renderStamps();
+      earnStamp("boarded");
+      if (me()?.id === "kareem") confetti();
       const starter = loopIndex(clockRotId());
       paintSong(starter.song, starter.song.rotation);
       setMood(clockRotId());
@@ -388,6 +542,7 @@ function bind() {
   $("#btn-board").onclick = board;
   $("#btn-gate").onclick = () => {
     $("#cabin").classList.add("hidden");
+    $("#btn-ping").classList.add("hidden");
     $("#gate").classList.remove("hidden");
     $("#pass").classList.remove("tear");
   };
@@ -427,6 +582,37 @@ function bind() {
     };
   });
   $("#wa-foot").href = TRIP.whatsapp;
+  $$("#jump [data-jump]").forEach((b) => {
+    b.onclick = () => {
+      const t = document.getElementById(b.dataset.jump) || document.querySelector(".channels");
+      t.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+  });
+  $("#btn-sticker").onclick = sendSticker;
+  $("#ml-prev").onclick = () => { mlIndex = (mlIndex - 1 + TRIP.mostLikely.length) % TRIP.mostLikely.length; renderML(); };
+  $("#ml-next").onclick = () => { mlIndex = (mlIndex + 1) % TRIP.mostLikely.length; renderML(); };
+  $("#btn-ping").onclick = () => {
+    earnStamp("ping");
+    const lines = [
+      "Cabin crew: more lime soda is on the way.",
+      "The captain says keep screaming the chorus.",
+      "Turbulence is just Vinay finding second gear.",
+      "Ranjana already photographed the attendant.",
+      "Lekhana would like you to know this is not the wine list."
+    ];
+    toast(lines[Math.floor(Math.random() * lines.length)]);
+    confetti();
+  };
+  const scratch = $("#scratch");
+  let hold;
+  const peek = () => {
+    scratch.classList.add("off");
+    toast("Peeked. The real card waits for 25 Sep.");
+  };
+  scratch.addEventListener("pointerdown", () => { hold = setTimeout(peek, 700); });
+  ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => {
+    scratch.addEventListener(ev, () => clearTimeout(hold));
+  });
 }
 
 function bootYT() {
@@ -461,6 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSeats();
   renderDays();
   renderSongs();
+  renderStamps();
   bind();
   tickClocks();
   setInterval(tickClocks, 1000);

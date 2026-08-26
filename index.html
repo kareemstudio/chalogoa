@@ -55,7 +55,7 @@
 
     <article class="pass" id="pass" aria-label="Boarding pass">
       <div class="pass-main">
-        <div class="stamp" aria-hidden="true">ENTRY<br>GOA</div>
+        <div class="pass-stickers" id="pass-stickers" aria-hidden="true"></div>
         <div class="pass-row">
           <div>
             <span class="lbl">Passenger</span>
@@ -93,7 +93,7 @@
     </article>
 
     <div class="seatmap-wrap">
-      <p class="seatmap-lbl">CHOOSE YOUR SEAT · THEN BOARD</p>
+      <p class="seatmap-lbl">THIS IS YOU · TAP A NAME · THEN BOARD</p>
       <div class="fuselage">
         <div class="cockpit"></div>
         <div class="seatmap" id="seatmap"></div>
@@ -174,11 +174,39 @@
     </div>
   </div>
 
+  <div class="jump" id="jump">
+    <button type="button" data-jump="channels">Channels</button>
+    <button type="button" data-jump="chat">Crew chat</button>
+    <button type="button" data-jump="likely">Most likely</button>
+    <button type="button" data-jump="manifest">The five</button>
+    <button type="button" data-jump="cake">Cake</button>
+  </div>
+
+  <div class="stamps-hud" id="stamps-hud"></div>
   <nav class="channels" id="channels" aria-label="Cabin channels"></nav>
 
   <section class="pad">
     <h3 class="sec-h">Captain’s briefing</h3>
-    <p class="brief">This is not a travel website. It is the seatback screen for a charter that should not exist: five friends, four days, one birthday. The mix is what actually plays on the airport road, in a shack at 3pm, and outside Tito’s after midnight — Hindi, Punjabi, English, no algorithm, on Goa time.</p>
+    <p class="brief">Kareem’s birthday charter. Crew of five: <strong>Kareem</strong>, <strong>Sushant</strong>, <strong>Vinay</strong>, <strong>Lekhana</strong>, <strong>Ranjana</strong>. The mix is what actually plays on the airport road, in a shack at 3pm, and outside Tito’s after midnight — Hindi, Punjabi, English, on Goa time.</p>
+  </section>
+
+  <section class="pad" id="chat">
+    <h3 class="sec-h">Crew chat · CG-2409</h3>
+    <p class="brief dim">The group chat, as the seatback would leak it.</p>
+    <div class="chat" id="chat-log"></div>
+    <div class="chat-send">
+      <button type="button" id="btn-sticker">Send a sticker as you</button>
+    </div>
+  </section>
+
+  <section class="pad" id="likely">
+    <h3 class="sec-h">Most likely to</h3>
+    <p class="brief dim" id="ml-prompt"></p>
+    <div class="ml-people" id="ml-people"></div>
+    <div class="ml-nav">
+      <button type="button" id="ml-prev">←</button>
+      <button type="button" id="ml-next">Next →</button>
+    </div>
   </section>
 
   <section class="pad" id="safety">
@@ -208,7 +236,8 @@
     <article class="locked" id="locked">
       <p class="sec-h">Overhead bin · birthday card</p>
       <h3 id="cake-title">Sealed until 25 SEP</h3>
-      <p id="cake-body">Do not open before Kareem’s day. The crew will know.</p>
+      <p id="cake-body">Hold to peek. Opens for real on 25 Sep.</p>
+      <div class="scratch" id="scratch">HOLD TO PEEK</div>
     </article>
   </section>
 
@@ -218,6 +247,9 @@
   </footer>
 </div>
 
+<button type="button" class="attendant hidden" id="btn-ping" aria-label="Call attendant">🔔</button>
+<div id="dossier" class="dossier hidden"></div>
+<div id="confetti" class="confetti" aria-hidden="true"></div>
 <div class="yt-host"><div id="yt-player"></div></div>
 <div id="toast" class="toast hidden"></div>
 

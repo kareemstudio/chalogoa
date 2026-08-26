@@ -7,11 +7,74 @@ window.TRIP = {
   birthdayName: "Kareem",
   whatsapp: "https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW",
   friends: [
-    { id: "kareem", name: "Kareem", nick: "Birthday Boy", title: "The reason we're all here", power: "Turns any evening into an event", emoji: "👑" },
-    { id: "f2", name: "Friend 2", nick: "Aux Lord", title: "Keeper of the playlist", power: "Always knows the next song", emoji: "🎧" },
-    { id: "f3", name: "Friend 3", nick: "Scooter Pilot", title: "Gets you there, eventually", power: "Never admits they're lost", emoji: "🛵" },
-    { id: "f4", name: "Friend 4", nick: "Shack Critic", title: "Orders for the table", power: "Finds the best lime soda", emoji: "🍋" },
-    { id: "f5", name: "Friend 5", nick: "Memory Card", title: "Official photographer", power: "Captures the chaos, misses the sunset", emoji: "📸" }
+    {
+      id: "kareem",
+      name: "Kareem",
+      nick: "Birthday Boy",
+      title: "The reason this flight exists",
+      power: "Turns any shack into an event",
+      emoji: "👑",
+      quote: "Cake first. Then chaos.",
+      packed: "One nice shirt. Zero plan."
+    },
+    {
+      id: "sushant",
+      name: "Sushant",
+      nick: "Aux Lord",
+      title: "Playlist dictator",
+      power: "Ilahi, then whatever you think you wanted",
+      emoji: "🎧",
+      quote: "If the aux is yours, the night is already over.",
+      packed: "Cables. Speakers. Moral high ground."
+    },
+    {
+      id: "vinay",
+      name: "Vinay",
+      nick: "Scooter Pilot",
+      title: "Gets you there, eventually",
+      power: "Never lost. Just exploring.",
+      emoji: "🛵",
+      quote: "Maps are a suggestion. The sea is that way.",
+      packed: "Licence. Courage. One helmet for five people."
+    },
+    {
+      id: "lekhana",
+      name: "Lekhana",
+      nick: "Shack Critic",
+      title: "Orders for the table",
+      power: "Knows which lime soda is a scam",
+      emoji: "🍋",
+      quote: "We are not eating at the first place we see.",
+      packed: "Sunscreen. Opinions. A better restaurant in mind."
+    },
+    {
+      id: "ranjana",
+      name: "Ranjana",
+      nick: "Memory Card",
+      title: "Official photographer",
+      power: "Captures the chaos, misses the sunset",
+      emoji: "📸",
+      quote: "If it isn't on the story, did we even go?",
+      packed: "Three batteries. One charger. No chill."
+    }
+  ],
+  chat: [
+    { from: "lekhana", text: "who's on aux. don't say Vinay." },
+    { from: "vinay", text: "rude. also I have the scooters so actually I am on aux." },
+    { from: "sushant", text: "Ilahi. non-negotiable. then we negotiate." },
+    { from: "ranjana", text: "photos first. then you can ruin the playlist." },
+    { from: "kareem", text: "cake first. then all of the above." },
+    { from: "lekhana", text: "24 sep. don't be late. I will leave you at the gate." },
+    { from: "sushant", text: "the cabin mix is already live. you're welcome." },
+    { from: "ranjana", text: "everyone look at the camera ONCE this trip. once." }
+  ],
+  mostLikely: [
+    "Most likely to lose the scooter key",
+    "Most likely to start Ilahi unprompted",
+    "Most likely to order for the whole table",
+    "Most likely to take 40 photos and post none",
+    "Most likely to declare 'one more shack'",
+    "Most likely to fall asleep on the beach"
   ],
   days: [
     {
@@ -19,10 +82,10 @@ window.TRIP = {
       title: "Touchdown",
       line: "Land, dump bags, steal a sunset, argue about dinner.",
       slots: [
-        { t: "Morning", i: "✈️", x: "Fly in. First coconut. First wrong turn." },
-        { t: "Afternoon", i: "🏖️", x: "Beach recon. Slippers optional, then mandatory again." },
-        { t: "Evening", i: "🍲", x: "Shack dinner. Too much fried fish. Perfect." },
-        { t: "Nightlife", i: "🎶", x: "Soft landing night. Tito's is tomorrow's problem." }
+        { t: "Morning", i: "✈️", x: "Vinay swears he knows the way from the airport. He does not." },
+        { t: "Afternoon", i: "🏖️", x: "Beach recon. Lekhana vetoes the first shack. Correctly." },
+        { t: "Evening", i: "🍲", x: "Too much fried fish. Ranjana documents it like a crime." },
+        { t: "Nightlife", i: "🎶", x: "Soft landing. Sushant tests the aux. Tito's is tomorrow." }
       ]
     },
     {
@@ -30,10 +93,10 @@ window.TRIP = {
       title: "Kareem Day",
       line: "Cake, chaos, and a night that will need a recap.",
       slots: [
-        { t: "Morning", i: "🎂", x: "Birthday breakfast. Confetti in the eggs." },
+        { t: "Morning", i: "🎂", x: "Birthday breakfast. Confetti in Kareem's eggs." },
         { t: "Afternoon", i: "🌊", x: "Water, sun, the gang in matching energy if not outfits." },
-        { t: "Evening", i: "🥂", x: "A toast. A cake. A speech someone will deny later." },
-        { t: "Nightlife", i: "🪩", x: "Tito's Night rotation. Kareem picks the first three." }
+        { t: "Evening", i: "🥂", x: "A toast. A cake. A speech Sushant will deny later." },
+        { t: "Nightlife", i: "🪩", x: "Tito's. Kareem picks the first three. Then mutiny." }
       ]
     },
     {
@@ -42,9 +105,9 @@ window.TRIP = {
       line: "The day you pretend is chill and then it isn't.",
       slots: [
         { t: "Morning", i: "😴", x: "Late checkout energy. Breakfast at lunch." },
-        { t: "Afternoon", i: "🛵", x: "Scooter loop. A fort, a viewpoint, a detour." },
-        { t: "Evening", i: "🌅", x: "Sunset Slow rotation. Stay for the last orange." },
-        { t: "Nightlife", i: "🔥", x: "One more night. The playlist knows." }
+        { t: "Afternoon", i: "🛵", x: "Vinay's scooter loop. A fort, a viewpoint, a detour." },
+        { t: "Evening", i: "🌅", x: "Sunset Slow. Ranjana finally looks up from the camera." },
+        { t: "Nightlife", i: "🔥", x: "One more night. Lekhana already booked the shack." }
       ]
     },
     {
@@ -52,10 +115,10 @@ window.TRIP = {
       title: "Last Splash",
       line: "Pack slowly. Swim anyway. Promise the next one.",
       slots: [
-        { t: "Morning", i: "🌅", x: "One last swim. Sand in the suitcase is a souvenir." },
-        { t: "Afternoon", i: "🧳", x: "Checkout, airport road, Highway to Goa in reverse." },
-        { t: "Evening", i: "✈️", x: "Home, louder than you left, quieter than you planned." },
-        { t: "Nightlife", i: "👀", x: "What happened in Goa stays in the group chat." }
+        { t: "Morning", i: "🌅", x: "One last swim. Sand in every suitcase is a souvenir." },
+        { t: "Afternoon", i: "🧳", x: "Checkout. Highway to Goa in reverse. Sushant still on aux." },
+        { t: "Evening", i: "✈️", x: "Home, louder than you left." },
+        { t: "Nightlife", i: "👀", x: "What happened in Goa stays in this chat." }
       ]
     }
   ]
