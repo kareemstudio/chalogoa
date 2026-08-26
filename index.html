@@ -21,23 +21,21 @@
 
   <main>
     <section class="screen active" id="home">
-      <div class="hero">
-        <div class="sun"></div><div class="horizon"></div><div class="ocean"></div><div class="road"></div>
-        <div class="palm a">🌴</div><div class="palm b">🌴</div><div class="car">🚙</div>
-        <div class="home-copy">
+      <div class="home">
+        <div class="poster">
           <div class="tiny">PRIVATE ROAD TRIP • GOA</div>
           <div class="home-title">CHALO<br>GOA</div>
           <div class="home-date">24 Sep - 27 Sep</div>
-          <div class="home-desc">5 Friends • 4 Days • Goa • Music • Birthday • Madness</div>
           <div class="bday-badge">🎂 Kareem Birthday</div>
-          <div class="home-actions">
-            <button class="btn primary" data-go="radio">▶ START THE ROAD TRIP</button>
-            <button class="btn ghost" data-go="radio">🎵 OPEN GOA RADIO</button>
-          </div>
         </div>
-      </div>
-      <div class="home-status">
-        <div>5 Friends<small>CREW</small></div><div>4 Days<small>TRIP</small></div><div>Kareem<small>BIRTHDAY</small></div><div>Goa<small>DESTINATION</small></div>
+        <p class="home-desc">5 Friends • 4 Days • Goa • Music • Birthday • Madness</p>
+        <div class="home-actions">
+          <button class="btn primary" data-go="radio">▶ START THE ROAD TRIP</button>
+          <button class="btn ghost" data-go="radio">🎵 OPEN GOA RADIO</button>
+        </div>
+        <div class="home-status">
+          <div>5 Friends<small>CREW</small></div><div>4 Days<small>TRIP</small></div><div>Kareem<small>BIRTHDAY</small></div><div>Goa<small>DESTINATION</small></div>
+        </div>
       </div>
     </section>
 
@@ -79,10 +77,6 @@
       <div class="confetti"><i style="left:8%;animation-delay:.45s">✨</i><i style="left:19%;animation-delay:.6s">🎉</i><i style="left:30%;animation-delay:0s">✨</i><i style="left:41%;animation-delay:.15s">🎉</i><i style="left:52%;animation-delay:.3s">✨</i><i style="left:63%;animation-delay:.45s">🎉</i><i style="left:74%;animation-delay:.6s">✨</i><i style="left:85%;animation-delay:0s">🎉</i></div>
     </section>
 
-    <section class="screen" id="group">
-      <div class="kicker">Official group</div><h1 class="title">GOA GROUP 💬</h1><p class="sub">All plans, chaos and last-minute decisions happen here.</p>
-      <div class="group-hero"><div class="chat">💬</div><h3>CHALO GOA</h3><p>24 Sep - 27 Sep<br>Kareem Birthday</p><a class="btn primary" href="https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW" target="_blank" rel="noopener">JOIN THE GOA GROUP 💬</a><p>See you in the group. 🌴</p></div>
-    </section>
   </main>
 
   <nav class="nav">
@@ -90,7 +84,6 @@
     <button data-go="crew"><span>👥</span>Crew</button>
     <button data-go="radio"><span>🎵</span>Radio</button>
     <button data-go="birthday"><span>🎂</span>Birthday</button>
-    <button data-go="group"><span>💬</span>Group</button>
     <button id="moreBtn"><span>☰</span>More</button>
   </nav>
 
@@ -103,6 +96,7 @@
         <button class="more-card" data-detail="vibes"><span>🌴</span><b>GOA VIBES</b></button>
         <button class="more-card" data-detail="memories"><span>📸</span><b>GOA MEMORIES</b></button>
         <button class="more-card" data-detail="pass"><span>🎟️</span><b>CHALO GOA PASS</b></button>
+        <button class="more-card" data-detail="group"><span>💬</span><b>GOA GROUP</b></button>
       </div>
     </div>
 
@@ -110,6 +104,7 @@
     <div class="detail" id="detail-vibes"><div class="kicker">Editorial collage</div><h2 class="title">GOA VIBES 🌴</h2><div class="vibes-grid"><div class="vibe">No Meetings. Only Beaches.</div><div class="vibe">Sleep Later. Goa First.</div><div class="vibe">Playlist &gt; Problems</div></div></div>
     <div class="detail" id="detail-memories"><div class="kicker">Polaroid archive</div><h2 class="title">GOA MEMORIES</h2><p class="sub">Photos loading after the madness begins…</p><div class="memory-grid"><div class="pol"><div class="ph">📷</div><b>DAY 1</b></div><div class="pol"><div class="ph">📷</div><b>DAY 2</b></div><div class="pol"><div class="ph">📷</div><b>DAY 3</b></div><div class="pol"><div class="ph">📷</div><b>DAY 4</b></div></div></div>
     <div class="detail" id="detail-pass"><div class="kicker">Collectible</div><h2 class="title">CHALO GOA PASS</h2><div class="pass"><small>PRIVATE ROAD TRIP PASS</small><h3>CHALO GOA</h3><div class="pass-grid"><div><small>DATE</small><b>24 Sep - 27 Sep</b></div><div><small>TRAVELLERS</small><b>5 Friends</b></div><div><small>OCCASION</small><b>Kareem Birthday</b></div><div><small>DESTINATION</small><b>GOA</b></div></div><small>STATUS</small><b>ROAD TRIP READY</b><div class="barcode"></div></div></div>
+    <div class="detail" id="detail-group"><div class="kicker">Official group</div><h2 class="title">GOA GROUP 💬</h2><p class="sub">All plans, chaos and last-minute decisions happen here.</p><div class="group-hero"><div class="chat">💬</div><h3>CHALO GOA</h3><p>24 Sep - 27 Sep<br>Kareem Birthday</p><a class="btn primary" href="https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW" target="_blank" rel="noopener">JOIN THE GOA GROUP 💬</a><p>See you in the group. 🌴</p></div></div>
   </aside>
 
   <div id="err" class="err"></div>
