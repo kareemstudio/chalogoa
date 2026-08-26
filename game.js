@@ -218,5 +218,10 @@
     if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
     if (SB && SB.mode === "live") toast("Live mode: connected to Supabase");
   }
-  DB.init().then(init);
+  function boot() {
+    init();
+    DB.init().then(refresh).catch(function () {});
+  }
+  function refresh() { const app = document.getElementById("app"); if (app && !app.classList.contains("hidden")) renderAll(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 })();
