@@ -213,6 +213,6 @@
   }
 
   // boot immediately (local-first); Supabase hydrates in background
-  function boot() { try { init(); } catch (e) { const el = $("#err"); if (el) { el.style.display = "block"; el.textContent = "⚠ init: " + (e.message || e); } } DB.init().then(() => { try { if ($("#app") && !$("#app").classList.contains("hidden")) renderAll(); } catch (e2) {} }).catch(() => {}); }
+  function boot() { try { init(); } catch (e) { const el = $("#err"); if (el) { el.style.display = "block"; el.textContent = "⚠ init: " + (e.message || e); } } try { setTimeout(confetti, 500); } catch (e2) {} DB.init().then(() => { try { if ($("#app") && !$("#app").classList.contains("hidden")) renderAll(); } catch (e3) {} }).catch(() => {}); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 })();
