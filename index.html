@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Air Chalo CG-2409 — Kareem's Birthday Escape</title>
 <meta name="theme-color" content="#140c08">
-<meta name="description" content="Board Air Chalo flight CG-2409. In-flight entertainment: Hindi, Punjabi and English travel mix for Kareem's Goa birthday escape, 24–27 Sep.">
+<meta name="description" content="Board Air Chalo flight CG-2409. Seatback mix: Hindi, Punjabi, English. Kareem's Goa birthday escape, 24–27 Sep.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -16,76 +16,110 @@
 </head>
 <body>
 
-<!-- ========== GATE / BOARDING PASS ========== -->
+<!-- grain + takeoff -->
+<div class="grain" aria-hidden="true"></div>
+<div id="takeoff" class="takeoff hidden">
+  <p class="tk-kicker">AIR CHALO</p>
+  <p class="tk-big" id="tk-line">DOORS CLOSING</p>
+  <p class="tk-sub">Cabin lights to sunset · Aux armed</p>
+</div>
+
+<!-- ========== GATE ========== -->
 <section id="gate" class="gate">
-  <div class="gate-window">
-    <div class="sky"></div>
-    <div class="sun"></div>
-    <div class="sea"></div>
-    <div class="palm-cut" aria-hidden="true">🌴</div>
-  </div>
-
-  <p class="gate-kicker">NOW BOARDING · GATE B4 · PANJIM CHARTER</p>
-  <h1 class="gate-title">CHALO GOA <span>✈️</span></h1>
-  <p class="gate-tag">5 Friends. 4 Days. 1 Birthday.<br><em>Unlimited Bad Decisions.</em> 😎</p>
-  <p class="gate-dates">24 SEP → 27 SEP</p>
-
-  <article class="pass" aria-label="Boarding pass">
-    <div class="pass-main">
-      <div class="pass-row">
-        <div>
-          <span class="lbl">Passenger</span>
-          <strong>THE GANG</strong>
-        </div>
-        <div class="right">
-          <span class="lbl">Flight</span>
-          <strong>CG-2409</strong>
-        </div>
+  <div class="gate-bg" aria-hidden="true"></div>
+  <div class="window-frame">
+    <div class="window-inner">
+      <div class="sky"></div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="sun"></div>
+      <div class="sea">
+        <div class="wave w1"></div>
+        <div class="wave w2"></div>
       </div>
-      <div class="pass-row">
-        <div>
-          <span class="lbl">From</span>
-          <strong>REAL LIFE</strong>
-        </div>
-        <div class="plane-mark">✈</div>
-        <div class="right">
-          <span class="lbl">To</span>
-          <strong>GOA / CHAOS</strong>
-        </div>
-      </div>
-      <div class="pass-row three">
-        <div><span class="lbl">Date</span><strong>24 SEP 26</strong></div>
-        <div><span class="lbl">Seat</span><strong>CREW</strong></div>
-        <div><span class="lbl">Class</span><strong>BAD IDEAS</strong></div>
-      </div>
-      <div class="barcode" aria-hidden="true"></div>
-    </div>
-    <div class="pass-stub">
-      <p class="stub-air">AIR CHALO</p>
-      <p class="stub-fl">CG-2409</p>
-      <p class="stub-to">GOA</p>
-      <p class="stub-nm">KAREEM<br>BIRTHDAY<br>ESCAPE</p>
-    </div>
-  </article>
-
-  <div class="cd-strip">
-    <p class="cd-lbl" id="gate-cd-lbl">DEPARTS IN</p>
-    <div class="cd" id="gate-cd">
-      <span><b id="g-d">--</b>d</span>
-      <span><b id="g-h">--</b>h</span>
-      <span><b id="g-m">--</b>m</span>
-      <span><b id="g-s">--</b>s</span>
+      <svg class="palm-svg" viewBox="0 0 120 160" aria-hidden="true">
+        <path d="M62 160 L58 70 M58 78 C20 40 8 18 18 8 C38 28 52 55 58 78 M58 72 C70 30 100 12 112 18 C90 38 68 60 58 72 M58 80 C40 50 18 48 12 58 C32 62 50 74 58 80 M58 76 C90 58 110 70 108 84 C88 78 68 80 58 76" fill="none" stroke="#071018" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <span class="floater f1">🥥</span>
+      <span class="floater f2">🛵</span>
+      <span class="floater f3">✈️</span>
+      <span class="floater f4">🪩</span>
     </div>
   </div>
 
-  <button class="board-btn" id="btn-board">BOARD FLIGHT CG-2409 <span>→</span></button>
-  <p class="gate-note">Cabin entertainment is a Hindi · Punjabi · English mix, locked to Goa time.</p>
+  <div class="gate-front">
+    <p class="gate-kicker"><span class="blink-dot"></span> NOW BOARDING · GATE B4 · PANJIM CHARTER</p>
+    <h1 class="gate-title">CHALO GOA <span>✈️</span></h1>
+    <p class="gate-tag">5 Friends. 4 Days. 1 Birthday.<br><em>Unlimited Bad Decisions.</em> 😎</p>
+    <p class="gate-dates">24 SEP → 27 SEP</p>
+
+    <article class="pass" id="pass" aria-label="Boarding pass">
+      <div class="pass-main">
+        <div class="stamp" aria-hidden="true">ENTRY<br>GOA</div>
+        <div class="pass-stickers" id="pass-stickers" aria-hidden="true"></div>
+        <div class="pass-row">
+          <div>
+            <span class="lbl">Passenger</span>
+            <strong id="pass-name">PICK A SEAT</strong>
+          </div>
+          <div class="right">
+            <span class="lbl">Flight</span>
+            <strong>CG-2409</strong>
+          </div>
+        </div>
+        <div class="pass-row">
+          <div>
+            <span class="lbl">From</span>
+            <strong>REAL LIFE</strong>
+          </div>
+          <div class="plane-mark">✈</div>
+          <div class="right">
+            <span class="lbl">To</span>
+            <strong>GOA / CHAOS</strong>
+          </div>
+        </div>
+        <div class="pass-row three">
+          <div><span class="lbl">Date</span><strong>24 SEP 26</strong></div>
+          <div><span class="lbl">Seat</span><strong id="pass-seat">—</strong></div>
+          <div><span class="lbl">Class</span><strong>BAD IDEAS</strong></div>
+        </div>
+        <div class="barcode" aria-hidden="true"></div>
+      </div>
+      <div class="pass-stub">
+        <p class="stub-air">AIR CHALO</p>
+        <p class="stub-fl">CG-2409</p>
+        <p class="stub-to">GOA</p>
+        <p class="stub-nm">KAREEM<br>BIRTHDAY<br>ESCAPE</p>
+      </div>
+    </article>
+
+    <div class="seatmap-wrap">
+      <p class="seatmap-lbl">THIS IS YOU · TAP A NAME · THEN BOARD</p>
+      <div class="fuselage">
+        <div class="cockpit"></div>
+        <div class="seatmap" id="seatmap"></div>
+      </div>
+    </div>
+
+    <div class="cd-strip">
+      <p class="cd-lbl" id="gate-cd-lbl">DEPARTS IN</p>
+      <div class="cd" id="gate-cd">
+        <span><b id="g-d">--</b>d</span>
+        <span><b id="g-h">--</b>h</span>
+        <span><b id="g-m">--</b>m</span>
+        <span><b id="g-s">--</b>s</span>
+      </div>
+    </div>
+
+    <button class="board-btn" id="btn-board" disabled>PICK A SEAT FIRST</button>
+    <p class="gate-note">Cabin mix: Hindi · Punjabi · English, locked to Goa time.</p>
+  </div>
 </section>
 
-<!-- ========== CABIN / IFE ========== -->
-<div id="cabin" class="cabin hidden">
+<!-- ========== CABIN ========== -->
+<div id="cabin" class="cabin hidden" data-mood="highway">
   <header class="ife-bar">
-    <div class="seatbelt" id="seatbelt">FASTEN SEATBELTS</div>
+    <div class="seatbelt" id="seatbelt">IN CABIN</div>
     <div class="ife-clock">
       <span id="ist-clock">--:-- IST</span>
       <span class="onair"><i></i> ON AIR</span>
@@ -93,24 +127,44 @@
     <button class="ife-icon" id="btn-gate" type="button">⌫ GATE</button>
   </header>
 
-  <p class="pa" id="pa">Cabin crew, prepare for takeoff. Aux is armed.</p>
+  <div class="pa-wrap"><p class="pa" id="pa">Cabin crew, prepare for takeoff. Aux is armed.</p></div>
+
+  <div class="instruments">
+    <div><span>ALT</span><b id="alt">FL350</b></div>
+    <div><span>GS</span><b id="gs">478</b></div>
+    <div><span>ETA GOA</span><b id="eta-mini">24 SEP</b></div>
+    <div><span>SEAT</span><b id="my-seat">—</b></div>
+  </div>
+
+  <div class="route-card">
+    <div class="route-ends"><span>REAL LIFE</span><span>GOA</span></div>
+    <div class="route-line">
+      <div class="route-fill" id="route-fill"></div>
+      <span class="route-plane" id="route-plane">✈</span>
+    </div>
+    <p class="route-cap" id="route-cap">Taxiing toward 24 September.</p>
+  </div>
 
   <div class="bezel">
-    <p class="bezel-brand">AIR CHALO · SEATBACK ENTERTAINMENT</p>
+    <div class="bezel-screws"><i></i><i></i></div>
+    <p class="bezel-brand">AIR CHALO · SEATBACK · CH 01–05</p>
     <div class="screen">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="zap" id="zap"></div>
       <div class="poster-wrap">
         <img id="cover" alt="Now playing" src="icon.svg">
+        <div class="disc" id="disc" aria-hidden="true"></div>
         <div class="poster-meta">
           <span class="ch-pill" id="ch-pill">CH 01 · HIGHWAY</span>
           <h2 id="song-title">Boarding complete</h2>
           <p id="song-artist">Tap play to arm the cabin aux</p>
         </div>
       </div>
-      <div class="scrub"><div id="bar"></div></div>
+      <div class="scrub" id="scrub"><div id="bar"></div></div>
       <div class="times"><span id="t-cur">0:00</span><span id="t-dur">0:00</span></div>
       <div class="ife-controls">
         <button type="button" id="btn-prev" aria-label="Previous">⏮</button>
-        <button type="button" class="big" id="btn-play">▶ PLAY</button>
+        <button type="button" class="big" id="btn-play">▶ ARM AUX</button>
         <button type="button" id="btn-next" aria-label="Next">⏭</button>
       </div>
       <div class="ife-links">
@@ -121,12 +175,39 @@
     </div>
   </div>
 
+  <div class="jump" id="jump">
+    <button type="button" data-jump="channels">Channels</button>
+    <button type="button" data-jump="chat">Crew chat</button>
+    <button type="button" data-jump="likely">Most likely</button>
+    <button type="button" data-jump="manifest">The five</button>
+    <button type="button" data-jump="cake">Cake</button>
+  </div>
+
+  <div class="stamps-hud" id="stamps-hud"></div>
   <nav class="channels" id="channels" aria-label="Cabin channels"></nav>
 
   <section class="pad">
     <h3 class="sec-h">Captain’s briefing</h3>
-    <p class="brief">This is not a travel website. It is the seatback screen for a charter that should not exist: five friends, four days, one birthday. The mix running in this cabin is the one you actually hear on the airport road, in a shack at 3pm, and outside Tito’s after midnight — Hindi, Punjabi, English, no algorithm, on Goa time.</p>
-    <p class="brief">Four channels sit on the clock. Channel 05, Kareem’s Cake Mix, is outside the clock. It plays when you ask, or when 25 September arrives on its own.</p>
+    <p class="brief">Kareem’s birthday charter. Crew of five: <strong>Kareem</strong>, <strong>Sushant</strong>, <strong>Vinay</strong>, <strong>Lekhana</strong>, <strong>Ranjana</strong>. The mix is what actually plays on the airport road, in a shack at 3pm, and outside Tito’s after midnight — Hindi, Punjabi, English, on Goa time.</p>
+  </section>
+
+  <section class="pad" id="chat">
+    <h3 class="sec-h">Crew chat · CG-2409</h3>
+    <p class="brief dim">The group chat, as the seatback would leak it.</p>
+    <div class="chat" id="chat-log"></div>
+    <div class="chat-send">
+      <button type="button" id="btn-sticker">Send a sticker as you</button>
+    </div>
+  </section>
+
+  <section class="pad" id="likely">
+    <h3 class="sec-h">Most likely to</h3>
+    <p class="brief dim" id="ml-prompt"></p>
+    <div class="ml-people" id="ml-people"></div>
+    <div class="ml-nav">
+      <button type="button" id="ml-prev">←</button>
+      <button type="button" id="ml-next">Next →</button>
+    </div>
   </section>
 
   <section class="pad" id="safety">
@@ -156,7 +237,8 @@
     <article class="locked" id="locked">
       <p class="sec-h">Overhead bin · birthday card</p>
       <h3 id="cake-title">Sealed until 25 SEP</h3>
-      <p id="cake-body">Do not open before Kareem’s day. The crew will know.</p>
+      <p id="cake-body">Hold to peek. Opens for real on 25 Sep.</p>
+      <div class="scratch" id="scratch">HOLD TO PEEK</div>
     </article>
   </section>
 
@@ -166,6 +248,9 @@
   </footer>
 </div>
 
+<button type="button" class="attendant hidden" id="btn-ping" aria-label="Call attendant">🔔</button>
+<div id="dossier" class="dossier hidden"></div>
+<div id="confetti" class="confetti" aria-hidden="true"></div>
 <div class="yt-host"><div id="yt-player"></div></div>
 <div id="toast" class="toast hidden"></div>
 
