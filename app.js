@@ -381,7 +381,7 @@ function board() {
       paintSong(starter.song, starter.song.rotation);
       setMood(clockRotId());
     }
-  }, 700);
+  }, 1100);
 }
 
 function bind() {
