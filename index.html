@@ -1,261 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Air Chalo CG-2409 — Kareem's Birthday Escape</title>
-<meta name="theme-color" content="#140c08">
-<meta name="description" content="Board Air Chalo flight CG-2409. Seatback mix: Hindi, Punjabi, English. Kareem's Goa birthday escape, 24–27 Sep.">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#071C2C" />
+<title>Air Chalo CG-2409 — The Goa Game</title>
+<meta name="description" content="Air Chalo CG-2409 · a private birthday charter to Goa for five friends. Chaos Miles, live games, missions and badges." />
+<link rel="icon" href="icon.svg" />
+<link rel="manifest" href="manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-<!-- grain + takeoff -->
-<div class="grain" aria-hidden="true"></div>
-<div id="takeoff" class="takeoff hidden">
-  <p class="tk-kicker">AIR CHALO</p>
-  <p class="tk-big" id="tk-line">DOORS CLOSING</p>
-  <p class="tk-sub">Cabin lights to sunset · Aux armed</p>
+<div class="takeoff hidden" id="takeoff" aria-hidden="true">
+  <p class="tk-kicker">AIR CHALO · CG-2409</p>
+  <h2 class="tk-big">BOARDING</h2>
+  <p class="tk-sub" id="tk-line">DOORS CLOSING</p>
 </div>
 
-<!-- ========== GATE ========== -->
-<section id="gate" class="gate">
-  <div class="gate-bg" aria-hidden="true"></div>
-  <div class="window-frame">
-    <div class="window-inner">
-      <div class="sky"></div>
-      <div class="cloud c1"></div>
-      <div class="cloud c2"></div>
-      <div class="sun"></div>
-      <div class="sea">
-        <div class="wave w1"></div>
-        <div class="wave w2"></div>
-      </div>
-      <svg class="palm-svg" viewBox="0 0 120 160" aria-hidden="true">
-        <path d="M62 160 L58 70 M58 78 C20 40 8 18 18 8 C38 28 52 55 58 78 M58 72 C70 30 100 12 112 18 C90 38 68 60 58 72 M58 80 C40 50 18 48 12 58 C32 62 50 74 58 80 M58 76 C90 58 110 70 108 84 C88 78 68 80 58 76" fill="none" stroke="#071018" stroke-width="5" stroke-linecap="round"/>
-      </svg>
-      <span class="floater f1">🥥</span>
-      <span class="floater f2">🛵</span>
-      <span class="floater f3">✈️</span>
-      <span class="floater f4">🪩</span>
-    </div>
+<nav class="nav" id="nav" aria-label="Sections">
+  <a class="nav-brand" href="#hero">AIR CHALO <span>CG-2409</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="#home" data-jump="home" data-ic="🏠">Home</a>
+    <a href="#missions" data-jump="missions" data-ic="🎯">Missions</a>
+    <a href="#ml" data-jump="ml" data-ic="🎲">Most Likely</a>
+    <a href="#bingo" data-jump="bingo" data-ic="🎯">Bingo</a>
+    <a href="#vote" data-jump="vote" data-ic="🗳️">Vote</a>
+    <a href="#passport" data-jump="passport" data-ic="🛂">Passport</a>
+    <a href="#wrapped" data-jump="wrapped" data-ic="🎁">Wrapped</a>
+    <a href="#music" data-jump="music" data-ic="🎵">Music</a>
   </div>
+  <div class="nav-clock" id="ist-clock">--:--:-- IST</div>
+</nav>
 
-  <div class="gate-front">
-    <p class="gate-kicker"><span class="blink-dot"></span> NOW BOARDING · GATE B4 · PANJIM CHARTER</p>
-    <h1 class="gate-title">CHALO GOA <span>✈️</span></h1>
-    <p class="gate-tag">5 Friends. 4 Days. 1 Birthday.<br><em>Unlimited Bad Decisions.</em> 😎</p>
-    <p class="gate-dates">24 SEP → 27 SEP</p>
+<!-- ============ CHAPTER 0: HERO / BOARDING ============ -->
+<header class="hero" id="hero">
+  <div class="hero-sky" aria-hidden="true">
+    <div class="hero-sun"></div>
+    <div class="hero-haze"></div>
+    <svg class="hero-palm palm-l" viewBox="0 0 120 200"><path d="M60 200 V70 M60 70 C40 40 10 35 0 40 M60 70 C80 40 110 35 120 40 M60 70 C45 30 35 5 30 0 M60 70 C75 30 85 5 90 0 M60 70 C58 35 60 10 60 0" stroke="#04222e" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+    <svg class="hero-palm palm-r" viewBox="0 0 120 200"><path d="M60 200 V70 M60 70 C40 40 10 35 0 40 M60 70 C80 40 110 35 120 40 M60 70 C45 30 35 5 30 0 M60 70 C75 30 85 5 90 0 M60 70 C58 35 60 10 60 0" stroke="#04222e" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+    <div class="hero-road"></div>
+  </div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">PRIVATE BIRTHDAY CHARTER · 24 SEP → 27 SEP</p>
+    <h1 class="hero-title">CHALO GOA <span class="hero-plane">✈️</span></h1>
+    <p class="hero-sub">5 Friends. 4 Days. 1 Birthday.</p>
+    <p class="hero-tag">Unlimited Bad Decisions. 😎</p>
+    <p class="hero-dates">24 SEP → 27 SEP</p>
 
-    <article class="pass" id="pass" aria-label="Boarding pass">
+    <div class="pass" id="pass">
       <div class="pass-main">
-        <div class="stamp" aria-hidden="true">ENTRY<br>GOA</div>
-        <div class="pass-stickers" id="pass-stickers" aria-hidden="true"></div>
-        <div class="pass-row">
-          <div>
-            <span class="lbl">Passenger</span>
-            <strong id="pass-name">PICK A SEAT</strong>
-          </div>
-          <div class="right">
-            <span class="lbl">Flight</span>
-            <strong>CG-2409</strong>
-          </div>
+        <div class="pass-top"><span class="pass-air">AIR CHALO</span><span class="pass-class">CLASS · BAD IDEAS</span></div>
+        <div class="pass-route">
+          <div class="pass-end"><span class="lbl">From</span><strong>REAL LIFE</strong></div>
+          <div class="pass-arrow">→</div>
+          <div class="pass-end right"><span class="lbl">To</span><strong>GOA / CHAOS</strong></div>
         </div>
-        <div class="pass-row">
-          <div>
-            <span class="lbl">From</span>
-            <strong>REAL LIFE</strong>
-          </div>
-          <div class="plane-mark">✈</div>
-          <div class="right">
-            <span class="lbl">To</span>
-            <strong>GOA / CHAOS</strong>
-          </div>
-        </div>
-        <div class="pass-row three">
+        <div class="pass-grid">
           <div><span class="lbl">Date</span><strong>24 SEP 26</strong></div>
+          <div><span class="lbl">Flight</span><strong>CG-2409</strong></div>
+          <div><span class="lbl">Passenger</span><strong id="pass-name">PICK A SEAT</strong></div>
           <div><span class="lbl">Seat</span><strong id="pass-seat">—</strong></div>
-          <div><span class="lbl">Class</span><strong>BAD IDEAS</strong></div>
         </div>
-        <div class="barcode" aria-hidden="true"></div>
+        <div class="barcode"></div>
+        <div class="pass-foot">KAREEM BIRTHDAY ESCAPE</div>
       </div>
-      <div class="pass-stub">
-        <p class="stub-air">AIR CHALO</p>
-        <p class="stub-fl">CG-2409</p>
-        <p class="stub-to">GOA</p>
-        <p class="stub-nm">KAREEM<br>BIRTHDAY<br>ESCAPE</p>
-      </div>
-    </article>
-
-    <div class="seatmap-wrap">
-      <p class="seatmap-lbl">THIS IS YOU · TAP A NAME · THEN BOARD</p>
-      <div class="fuselage">
-        <div class="cockpit"></div>
-        <div class="seatmap" id="seatmap"></div>
-      </div>
+      <div class="pass-stub"><span class="stub-fl">CG</span><span class="stub-to">2409</span><span class="stub-nm">GOA<br>KAREEM</span></div>
+      <div class="pass-stickers" id="pass-stickers"></div>
     </div>
 
-    <div class="cd-strip">
+    <section class="preboard" aria-label="Passenger selection">
+      <h2 class="sec-h">Choose your seat</h2>
+      <div class="seat-select" id="seat-select"></div>
+      <button class="board-btn" id="btn-board" type="button" disabled>PICK A SEAT FIRST</button>
+      <p class="preboard-note" id="board-note">Pick your seat to board · one friend per device</p>
+    </section>
+
+    <section class="countdown" aria-label="Departure countdown">
       <p class="cd-lbl" id="gate-cd-lbl">DEPARTS IN</p>
-      <div class="cd" id="gate-cd">
-        <span><b id="g-d">--</b>d</span>
-        <span><b id="g-h">--</b>h</span>
-        <span><b id="g-m">--</b>m</span>
-        <span><b id="g-s">--</b>s</span>
+      <div class="cd-modules">
+        <div class="cd-mod"><span class="cd-num" id="g-d">00</span><span class="cd-cap">DAYS</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-mod"><span class="cd-num" id="g-h">00</span><span class="cd-cap">HOURS</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-mod"><span class="cd-num" id="g-m">00</span><span class="cd-cap">MINUTES</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-mod"><span class="cd-num" id="g-s">00</span><span class="cd-cap">SECONDS</span></div>
       </div>
-    </div>
+    </section>
 
-    <button class="board-btn" id="btn-board" disabled>PICK A SEAT FIRST</button>
-    <p class="gate-note">Cabin mix: Hindi · Punjabi · English, locked to Goa time.</p>
+    <section class="status" aria-label="Flight status">
+      <div class="status-row">
+        <div class="status-cell"><span class="ico">🛰️</span><span class="lbl">ALT</span><strong id="alt">TAXI</strong></div>
+        <div class="status-cell"><span class="ico">📡</span><span class="lbl">GS</span><strong id="gs">478</strong></div>
+        <div class="status-cell"><span class="ico">📍</span><span class="lbl">ETA GOA</span><strong>24 SEP</strong></div>
+        <div class="status-cell"><span class="ico">💺</span><span class="lbl">SEAT</span><strong id="my-seat">—</strong></div>
+      </div>
+      <div class="route">
+        <span class="route-from">REAL LIFE</span>
+        <div class="route-line"><div class="route-fill" id="route-fill"></div><div class="route-plane" id="route-plane">✈</div></div>
+        <span class="route-to">GOA</span>
+      </div>
+      <p class="route-cap" id="route-cap">Taxiing toward 24 September.</p>
+      <div class="stamps"><span class="stamps-lbl">PASSPORT</span><div class="stamps-hud" id="stamps-hud"></div></div>
+    </section>
   </div>
-</section>
+</header>
 
-<!-- ========== CABIN ========== -->
-<div id="cabin" class="cabin hidden" data-mood="highway">
-  <header class="ife-bar">
-    <div class="seatbelt" id="seatbelt">IN CABIN</div>
-    <div class="ife-clock">
-      <span id="ist-clock">--:-- IST</span>
-      <span class="onair"><i></i> ON AIR</span>
-    </div>
-    <button class="ife-icon" id="btn-gate" type="button">⌫ GATE</button>
-  </header>
+<!-- ============ GAME APP (after boarding) ============ -->
+<main class="app hidden" id="app">
+  <div class="chapter-banner" id="chapter-banner"></div>
 
-  <div class="pa-wrap"><p class="pa" id="pa">Cabin crew, prepare for takeoff. Aux is armed.</p></div>
-
-  <div class="instruments">
-    <div><span>ALT</span><b id="alt">FL350</b></div>
-    <div><span>GS</span><b id="gs">478</b></div>
-    <div><span>ETA GOA</span><b id="eta-mini">24 SEP</b></div>
-    <div><span>SEAT</span><b id="my-seat">—</b></div>
-  </div>
-
-  <div class="route-card">
-    <div class="route-ends"><span>REAL LIFE</span><span>GOA</span></div>
-    <div class="route-line">
-      <div class="route-fill" id="route-fill"></div>
-      <span class="route-plane" id="route-plane">✈</span>
-    </div>
-    <p class="route-cap" id="route-cap">Taxiing toward 24 September.</p>
-  </div>
-
-  <div class="bezel">
-    <div class="bezel-screws"><i></i><i></i></div>
-    <p class="bezel-brand">AIR CHALO · SEATBACK · CH 01–05</p>
-    <div class="screen">
-      <div class="scanlines" aria-hidden="true"></div>
-      <div class="zap" id="zap"></div>
-      <div class="poster-wrap">
-        <img id="cover" alt="Now playing" src="icon.svg">
-        <div class="disc" id="disc" aria-hidden="true"></div>
-        <div class="poster-meta">
-          <span class="ch-pill" id="ch-pill">CH 01 · HIGHWAY</span>
-          <h2 id="song-title">Boarding complete</h2>
-          <p id="song-artist">Tap play to arm the cabin aux</p>
+  <!-- HOME / DASHBOARD -->
+  <section class="section" id="home">
+    <div class="wrap">
+      <div class="dash-head" id="dash-head"></div>
+      <div class="dash-grid">
+        <div class="dash-card mission-card" id="dash-mission"></div>
+        <div class="dash-card vote-card" id="dash-vote"></div>
+        <div class="dash-card game-card" id="dash-game"></div>
+        <div class="dash-card feed-card">
+          <p class="sec-h">CREW ACTIVITY</p>
+          <div class="activity" id="dash-activity"></div>
         </div>
       </div>
-      <div class="scrub" id="scrub"><div id="bar"></div></div>
-      <div class="times"><span id="t-cur">0:00</span><span id="t-dur">0:00</span></div>
-      <div class="ife-controls">
-        <button type="button" id="btn-prev" aria-label="Previous">⏮</button>
-        <button type="button" class="big" id="btn-play">▶ ARM AUX</button>
-        <button type="button" id="btn-next" aria-label="Next">⏭</button>
+    </div>
+  </section>
+
+  <!-- MISSIONS -->
+  <section class="section" id="missions">
+    <div class="wrap">
+      <p class="sec-h">Classified</p>
+      <h2 class="sec-title">Secret Missions</h2>
+      <div class="mission-list" id="mission-list"></div>
+    </div>
+  </section>
+
+  <!-- MOST LIKELY -->
+  <section class="section" id="ml">
+    <div class="wrap">
+      <p class="sec-h">Live game</p>
+      <h2 class="sec-title">Most Likely To</h2>
+      <div class="ml-stage" id="ml-stage"></div>
+    </div>
+  </section>
+
+  <!-- BINGO -->
+  <section class="section" id="bingo">
+    <div class="wrap">
+      <p class="sec-h">Shared board</p>
+      <h2 class="sec-title">Goa Bingo</h2>
+      <div class="bingo-grid" id="bingo-grid"></div>
+      <p class="bingo-msg" id="bingo-msg"></p>
+    </div>
+  </section>
+
+  <!-- VOTE -->
+  <section class="section" id="vote">
+    <div class="wrap">
+      <p class="sec-h">Crew decision</p>
+      <h2 class="sec-title">Tonight's Vote</h2>
+      <div class="poll-box" id="poll-box"></div>
+    </div>
+  </section>
+
+  <!-- PASSPORT -->
+  <section class="section" id="passport">
+    <div class="wrap">
+      <p class="sec-h">Republic of Bad Ideas</p>
+      <h2 class="sec-title">Goa Passport</h2>
+      <div class="passport" id="passport-box"></div>
+      <p class="sec-h" style="margin-top:30px">Achievements</p>
+      <div class="ach-grid" id="ach-grid"></div>
+    </div>
+  </section>
+
+  <!-- WRAPPED -->
+  <section class="section" id="wrapped">
+    <div class="wrap">
+      <p class="sec-h">After the trip</p>
+      <h2 class="sec-title">Chalo Goa Wrapped</h2>
+      <div class="wrapped" id="wrapped-box"></div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section class="section" id="music">
+    <div class="wrap">
+      <p class="sec-h">Seatback entertainment</p>
+      <h2 class="sec-title">The Cabin Screen</h2>
+      <div class="player">
+        <div class="screen">
+          <div class="scanlines"></div>
+          <div class="zap" id="zap"></div>
+          <div class="poster-wrap"><img id="cover" src="icon.svg" alt="artwork" /><div class="disc" id="disc"></div>
+            <div class="poster-meta"><span class="ch-pill" id="ch-pill">CH 01 · HIGHWAY TO GOA</span><h3 id="song-title">Cabin warming up…</h3><p id="song-artist">Awaiting takeoff</p></div>
+          </div>
+          <div class="scrub" id="scrub"><div id="bar"></div></div>
+          <div class="times"><span id="t-cur">0:00</span><span id="t-dur">0:00</span></div>
+        </div>
+        <div class="player-controls">
+          <div class="vol-wrap"><span class="vol-ico">🔊</span><input id="vol" class="vol" type="range" min="0" max="100" value="80" aria-label="Volume" /></div>
+          <div class="ife-buttons">
+            <button id="btn-prev" type="button" aria-label="Previous">⏮</button>
+            <button id="btn-play" class="big" type="button">▶ ARM AUX</button>
+            <button id="btn-next" type="button" aria-label="Next">⏭</button>
+          </div>
+          <div class="ife-meta"><button id="btn-live" type="button" class="live-btn">⟳ GOA TIME</button>
+            <span class="src"><a id="yt-link" href="#" target="_blank" rel="noopener">YouTube</a><a id="ytm-link" href="#" target="_blank" rel="noopener">YT Music</a></span></div>
+          <div id="yt-player"></div>
+        </div>
       </div>
-      <div class="ife-links">
-        <a id="yt-link" target="_blank" rel="noopener">YouTube</a>
-        <a id="ytm-link" target="_blank" rel="noopener">YT Music</a>
-        <button type="button" id="btn-live">LIVE CLOCK</button>
+      <p class="sec-h">Channels</p>
+      <div class="channels" id="channels"></div>
+      <p class="sec-h">Full inflight catalogue</p>
+      <div class="lang-row" id="lang-row">
+        <button type="button" data-lang="all" class="on">All</button>
+        <button type="button" data-lang="Hindi">Hindi</button>
+        <button type="button" data-lang="Punjabi">Punjabi</button>
+        <button type="button" data-lang="English">English</button>
       </div>
-    </div>
-  </div>
-
-  <div class="jump" id="jump">
-    <button type="button" data-jump="channels">Channels</button>
-    <button type="button" data-jump="chat">Crew chat</button>
-    <button type="button" data-jump="likely">Most likely</button>
-    <button type="button" data-jump="manifest">The five</button>
-    <button type="button" data-jump="cake">Cake</button>
-  </div>
-
-  <div class="stamps-hud" id="stamps-hud"></div>
-  <nav class="channels" id="channels" aria-label="Cabin channels"></nav>
-
-  <section class="pad">
-    <h3 class="sec-h">Captain’s briefing</h3>
-    <p class="brief">Kareem’s birthday charter. Crew of five: <strong>Kareem</strong>, <strong>Sushant</strong>, <strong>Vinay</strong>, <strong>Lekhana</strong>, <strong>Ranjana</strong>. The mix is what actually plays on the airport road, in a shack at 3pm, and outside Tito’s after midnight — Hindi, Punjabi, English, on Goa time.</p>
-  </section>
-
-  <section class="pad" id="chat">
-    <h3 class="sec-h">Crew chat · CG-2409</h3>
-    <p class="brief dim">The group chat, as the seatback would leak it.</p>
-    <div class="chat" id="chat-log"></div>
-    <div class="chat-send">
-      <button type="button" id="btn-sticker">Send a sticker as you</button>
+      <div class="song-list" id="song-list"></div>
     </div>
   </section>
+</main>
 
-  <section class="pad" id="likely">
-    <h3 class="sec-h">Most likely to</h3>
-    <p class="brief dim" id="ml-prompt"></p>
-    <div class="ml-people" id="ml-people"></div>
-    <div class="ml-nav">
-      <button type="button" id="ml-prev">←</button>
-      <button type="button" id="ml-next">Next →</button>
-    </div>
-  </section>
+<button class="attendant hidden" id="btn-ping" type="button" aria-label="Ping crew">🔔</button>
+<div class="dossier hidden" id="dossier" role="dialog" aria-modal="true"></div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+<div class="toast hidden" id="toast"></div>
+<div class="grain" aria-hidden="true"></div>
 
-  <section class="pad" id="safety">
-    <h3 class="sec-h">Safety card · the four days</h3>
-    <p class="brief dim">In the event of a good time, remain seated until the cake is served.</p>
-    <div class="day-switch" id="day-switch"></div>
-    <article class="safety-card" id="safety-card"></article>
-  </section>
-
-  <section class="pad" id="manifest">
-    <h3 class="sec-h">Passenger manifest</h3>
-    <div class="seats" id="seats"></div>
-  </section>
-
-  <section class="pad" id="playlist">
-    <h3 class="sec-h">Full inflight catalogue</h3>
-    <div class="lang-row" id="lang-row">
-      <button data-lang="all" class="on">All</button>
-      <button data-lang="Hindi">Hindi</button>
-      <button data-lang="Punjabi">Punjabi</button>
-      <button data-lang="English">English</button>
-    </div>
-    <div id="song-list" class="song-list"></div>
-  </section>
-
-  <section class="pad" id="cake">
-    <article class="locked" id="locked">
-      <p class="sec-h">Overhead bin · birthday card</p>
-      <h3 id="cake-title">Sealed until 25 SEP</h3>
-      <p id="cake-body">Hold to peek. Opens for real on 25 Sep.</p>
-      <div class="scratch" id="scratch">HOLD TO PEEK</div>
-    </article>
-  </section>
-
-  <footer class="cab-foot">
-    <a id="wa-foot" target="_blank" rel="noopener">Open group chat</a>
-    <p>Air Chalo CG-2409 · until the next bad idea.</p>
-  </footer>
-</div>
-
-<button type="button" class="attendant hidden" id="btn-ping" aria-label="Call attendant">🔔</button>
-<div id="dossier" class="dossier hidden"></div>
-<div id="confetti" class="confetti" aria-hidden="true"></div>
-<div class="yt-host"><div id="yt-player"></div></div>
-<div id="toast" class="toast hidden"></div>
-
+<script src="config.js"></script>
+<script src="supabase-client.js"></script>
 <script src="songs.js"></script>
 <script src="data.js"></script>
-<script src="app.js"></script>
+<script src="content.js"></script>
+<script src="store.js"></script>
+<script src="game.js"></script>
 </body>
 </html>
