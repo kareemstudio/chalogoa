@@ -1,14 +1,10 @@
 {
-  "name": "Air Chalo CG-2409",
-  "short_name": "Chalo Goa",
-  "description": "Kareem's birthday escape. Board the cabin. Drop the aux.",
-  "start_url": "./index.html",
-  "scope": "./",
+  "name": "CHALO GOA",
+  "short_name": "CHALO GOA",
+  "description": "CHALO GOA · 24 Sep - 27 Sep · Kareem Birthday · Goa road trip with friends.",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#120c09",
-  "theme_color": "#120c09",
-  "orientation": "portrait",
-  "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
-  ]
+  "background_color": "#0b1f3a",
+  "theme_color": "#0b1f3a",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }
