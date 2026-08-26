@@ -1,247 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#071C2C" />
-<title>Air Chalo CG-2409 — The Goa Game</title>
-<meta name="description" content="Air Chalo CG-2409 · a private birthday charter to Goa for five friends. Chaos Miles, live games, missions and badges." />
-<link rel="icon" href="icon.svg" />
-<link rel="manifest" href="manifest.json" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#06141f" />
+  <title>AIR CHALO · CG-2409 — The Goa Game</title>
+  <meta name="description" content="A private birthday charter to Goa for five friends. GOA FM, Chaos Miles, live games, secret missions and badges." />
+  <link rel="icon" href="icon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><div class="grain"></div></div>
+  <div id="err" class="err-banner" style="display:none"></div>
 
-<div class="takeoff hidden" id="takeoff" aria-hidden="true">
-  <p class="tk-kicker">AIR CHALO · CG-2409</p>
-  <h2 class="tk-big">BOARDING</h2>
-  <p class="tk-sub" id="tk-line">DOORS CLOSING</p>
-</div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">✈</span><span class="brand-txt">AIR&nbsp;CHALO</span><span class="brand-flight">CG-2409</span></div>
+    <div class="top-right"><span id="ist-clock" class="clock">--:--:-- IST</span><span class="live-dot" id="mode-pill">LOCAL</span></div>
+  </header>
 
-<nav class="nav" id="nav" aria-label="Sections">
-  <a class="nav-brand" href="#hero">AIR CHALO <span>CG-2409</span></a>
-  <div class="nav-links" id="nav-links">
-    <a href="#home" data-jump="home" data-ic="🏠">Home</a>
-    <a href="#missions" data-jump="missions" data-ic="🎯">Missions</a>
-    <a href="#ml" data-jump="ml" data-ic="🎲">Most Likely</a>
-    <a href="#bingo" data-jump="bingo" data-ic="🎯">Bingo</a>
-    <a href="#vote" data-jump="vote" data-ic="🗳️">Vote</a>
-    <a href="#passport" data-jump="passport" data-ic="🛂">Passport</a>
-    <a href="#wrapped" data-jump="wrapped" data-ic="🎁">Wrapped</a>
-    <a href="#music" data-jump="music" data-ic="🎵">Music</a>
-  </div>
-  <div class="nav-clock" id="ist-clock">--:--:-- IST</div>
-</nav>
+  <main>
+    <!-- ============ HERO + MUSIC FIRST ============ -->
+    <section id="hero" class="hero">
+      <div class="hero-copy">
+        <div class="kicker">5 Friends · 4 Days · 1 Birthday</div>
+        <h1 class="hero-title">AIR&nbsp;CHALO</h1>
+        <div class="hero-sub">FLIGHT CG-2409 · FROM REAL LIFE → TO GOA / CHAOS</div>
+        <p class="hero-tag">Unlimited Bad Decisions. 😎 <span class="dates">24 SEP → 27 SEP</span></p>
+        <p class="hero-note">Sealed until 25 SEP · Hold to peek</p>
+      </div>
 
-<!-- ============ CHAPTER 0: HERO / BOARDING ============ -->
-<header class="hero" id="hero">
-  <div class="hero-sky" aria-hidden="true">
-    <div class="hero-sun"></div>
-    <div class="hero-haze"></div>
-    <svg class="hero-palm palm-l" viewBox="0 0 120 200"><path d="M60 200 V70 M60 70 C40 40 10 35 0 40 M60 70 C80 40 110 35 120 40 M60 70 C45 30 35 5 30 0 M60 70 C75 30 85 5 90 0 M60 70 C58 35 60 10 60 0" stroke="#04222e" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-    <svg class="hero-palm palm-r" viewBox="0 0 120 200"><path d="M60 200 V70 M60 70 C40 40 10 35 0 40 M60 70 C80 40 110 35 120 40 M60 70 C45 30 35 5 30 0 M60 70 C75 30 85 5 90 0 M60 70 C58 35 60 10 60 0" stroke="#04222e" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-    <div class="hero-road"></div>
-  </div>
-  <div class="hero-inner">
-    <p class="hero-eyebrow">PRIVATE BIRTHDAY CHARTER · 24 SEP → 27 SEP</p>
-    <h1 class="hero-title">CHALO GOA <span class="hero-plane">✈️</span></h1>
-    <p class="hero-sub">5 Friends. 4 Days. 1 Birthday.</p>
-    <p class="hero-tag">Unlimited Bad Decisions. 😎</p>
-    <p class="hero-dates">24 SEP → 27 SEP</p>
-
-    <div class="pass" id="pass">
-      <div class="pass-main">
-        <div class="pass-top"><span class="pass-air">AIR CHALO</span><span class="pass-class">CLASS · BAD IDEAS</span></div>
-        <div class="pass-route">
-          <div class="pass-end"><span class="lbl">From</span><strong>REAL LIFE</strong></div>
-          <div class="pass-arrow">→</div>
-          <div class="pass-end right"><span class="lbl">To</span><strong>GOA / CHAOS</strong></div>
+      <!-- GOA FM player card -->
+      <div class="player-card" id="player">
+        <div class="pc-top">
+          <span class="pc-freq">GOA FM 93.7</span>
+          <span class="pc-ch" id="ch-pill">CH 01 · HIGHWAY</span>
         </div>
-        <div class="pass-grid">
-          <div><span class="lbl">Date</span><strong>24 SEP 26</strong></div>
-          <div><span class="lbl">Flight</span><strong>CG-2409</strong></div>
-          <div><span class="lbl">Passenger</span><strong id="pass-name">PICK A SEAT</strong></div>
-          <div><span class="lbl">Seat</span><strong id="pass-seat">—</strong></div>
-        </div>
-        <div class="barcode"></div>
-        <div class="pass-foot">KAREEM BIRTHDAY ESCAPE</div>
-      </div>
-      <div class="pass-stub"><span class="stub-fl">CG</span><span class="stub-to">2409</span><span class="stub-nm">GOA<br>KAREEM</span></div>
-      <div class="pass-stickers" id="pass-stickers"></div>
-    </div>
-
-    <section class="preboard" aria-label="Passenger selection">
-      <h2 class="sec-h">Choose your seat</h2>
-      <div class="seat-select" id="seat-select"></div>
-      <button class="board-btn" id="btn-board" type="button" disabled>PICK A SEAT FIRST</button>
-      <p class="preboard-note" id="board-note">Pick your seat to board · one friend per device</p>
-    </section>
-
-    <section class="countdown" aria-label="Departure countdown">
-      <p class="cd-lbl" id="gate-cd-lbl">DEPARTS IN</p>
-      <div class="cd-modules">
-        <div class="cd-mod"><span class="cd-num" id="g-d">00</span><span class="cd-cap">DAYS</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-mod"><span class="cd-num" id="g-h">00</span><span class="cd-cap">HOURS</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-mod"><span class="cd-num" id="g-m">00</span><span class="cd-cap">MINUTES</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-mod"><span class="cd-num" id="g-s">00</span><span class="cd-cap">SECONDS</span></div>
-      </div>
-    </section>
-
-    <section class="status" aria-label="Flight status">
-      <div class="status-row">
-        <div class="status-cell"><span class="ico">🛰️</span><span class="lbl">ALT</span><strong id="alt">TAXI</strong></div>
-        <div class="status-cell"><span class="ico">📡</span><span class="lbl">GS</span><strong id="gs">478</strong></div>
-        <div class="status-cell"><span class="ico">📍</span><span class="lbl">ETA GOA</span><strong>24 SEP</strong></div>
-        <div class="status-cell"><span class="ico">💺</span><span class="lbl">SEAT</span><strong id="my-seat">—</strong></div>
-      </div>
-      <div class="route">
-        <span class="route-from">REAL LIFE</span>
-        <div class="route-line"><div class="route-fill" id="route-fill"></div><div class="route-plane" id="route-plane">✈</div></div>
-        <span class="route-to">GOA</span>
-      </div>
-      <p class="route-cap" id="route-cap">Taxiing toward 24 September.</p>
-      <div class="stamps"><span class="stamps-lbl">PASSPORT</span><div class="stamps-hud" id="stamps-hud"></div></div>
-    </section>
-  </div>
-</header>
-
-<!-- ============ GAME APP (after boarding) ============ -->
-<main class="app hidden" id="app">
-  <div class="chapter-banner" id="chapter-banner"></div>
-
-  <!-- HOME / DASHBOARD -->
-  <section class="section" id="home">
-    <div class="wrap">
-      <div class="dash-head" id="dash-head"></div>
-      <div class="dash-grid">
-        <div class="dash-card mission-card" id="dash-mission"></div>
-        <div class="dash-card vote-card" id="dash-vote"></div>
-        <div class="dash-card game-card" id="dash-game"></div>
-        <div class="dash-card feed-card">
-          <p class="sec-h">CREW ACTIVITY</p>
-          <div class="activity" id="dash-activity"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSIONS -->
-  <section class="section" id="missions">
-    <div class="wrap">
-      <p class="sec-h">Classified</p>
-      <h2 class="sec-title">Secret Missions</h2>
-      <div class="mission-list" id="mission-list"></div>
-    </div>
-  </section>
-
-  <!-- MOST LIKELY -->
-  <section class="section" id="ml">
-    <div class="wrap">
-      <p class="sec-h">Live game</p>
-      <h2 class="sec-title">Most Likely To</h2>
-      <div class="ml-stage" id="ml-stage"></div>
-    </div>
-  </section>
-
-  <!-- BINGO -->
-  <section class="section" id="bingo">
-    <div class="wrap">
-      <p class="sec-h">Shared board</p>
-      <h2 class="sec-title">Goa Bingo</h2>
-      <div class="bingo-grid" id="bingo-grid"></div>
-      <p class="bingo-msg" id="bingo-msg"></p>
-    </div>
-  </section>
-
-  <!-- VOTE -->
-  <section class="section" id="vote">
-    <div class="wrap">
-      <p class="sec-h">Crew decision</p>
-      <h2 class="sec-title">Tonight's Vote</h2>
-      <div class="poll-box" id="poll-box"></div>
-    </div>
-  </section>
-
-  <!-- PASSPORT -->
-  <section class="section" id="passport">
-    <div class="wrap">
-      <p class="sec-h">Republic of Bad Ideas</p>
-      <h2 class="sec-title">Goa Passport</h2>
-      <div class="passport" id="passport-box"></div>
-      <p class="sec-h" style="margin-top:30px">Achievements</p>
-      <div class="ach-grid" id="ach-grid"></div>
-    </div>
-  </section>
-
-  <!-- WRAPPED -->
-  <section class="section" id="wrapped">
-    <div class="wrap">
-      <p class="sec-h">After the trip</p>
-      <h2 class="sec-title">Chalo Goa Wrapped</h2>
-      <div class="wrapped" id="wrapped-box"></div>
-    </div>
-  </section>
-
-  <!-- MUSIC -->
-  <section class="section" id="music">
-    <div class="wrap">
-      <p class="sec-h">Seatback entertainment</p>
-      <h2 class="sec-title">The Cabin Screen</h2>
-      <div class="player">
-        <div class="screen">
-          <div class="scanlines"></div>
-          <div class="zap" id="zap"></div>
-          <div class="poster-wrap"><img id="cover" src="icon.svg" alt="artwork" /><div class="disc" id="disc"></div>
-            <div class="poster-meta"><span class="ch-pill" id="ch-pill">CH 01 · HIGHWAY TO GOA</span><h3 id="song-title">Cabin warming up…</h3><p id="song-artist">Awaiting takeoff</p></div>
+        <div class="pc-now">
+          <img id="cover" class="pc-cover" src="icon.svg" alt="cover" />
+          <div class="pc-meta">
+            <div id="song-title" class="pc-title">Loading the cabin…</div>
+            <div id="song-artist" class="pc-artist">—</div>
+            <div class="pc-links"><a id="yt-link" href="#" target="_blank" rel="noopener">YouTube</a><a id="ytm-link" href="#" target="_blank" rel="noopener">Music</a></div>
           </div>
-          <div class="scrub" id="scrub"><div id="bar"></div></div>
-          <div class="times"><span id="t-cur">0:00</span><span id="t-dur">0:00</span></div>
         </div>
-        <div class="player-controls">
-          <div class="vol-wrap"><span class="vol-ico">🔊</span><input id="vol" class="vol" type="range" min="0" max="100" value="80" aria-label="Volume" /></div>
-          <div class="ife-buttons">
-            <button id="btn-prev" type="button" aria-label="Previous">⏮</button>
-            <button id="btn-play" class="big" type="button">▶ ARM AUX</button>
-            <button id="btn-next" type="button" aria-label="Next">⏭</button>
-          </div>
-          <div class="ife-meta"><button id="btn-live" type="button" class="live-btn">⟳ GOA TIME</button>
-            <span class="src"><a id="yt-link" href="#" target="_blank" rel="noopener">YouTube</a><a id="ytm-link" href="#" target="_blank" rel="noopener">YT Music</a></span></div>
-          <div id="yt-player"></div>
+        <div class="pc-scrub" id="scrub"><div class="pc-bar" id="bar"></div></div>
+        <div class="pc-time"><span id="t-cur">0:00</span><span id="t-dur">0:00</span></div>
+        <div class="pc-ctrl">
+          <button id="btn-prev" class="pc-btn" title="Previous">⏮</button>
+          <button id="btn-play" class="pc-btn pc-play" title="Play / Pause">▶ ARM AUX</button>
+          <button id="btn-next" class="pc-btn" title="Next">⏭</button>
+          <button id="btn-live" class="pc-btn pc-live" title="Lock to Goa time">⟳ LIVE</button>
         </div>
+        <div class="pc-vol"><span>🔊</span><input id="vol" type="range" min="0" max="100" value="80" /></div>
+        <div id="channels" class="pc-channels"></div>
+        <div id="lang-row" class="pc-lang"></div>
       </div>
-      <p class="sec-h">Channels</p>
-      <div class="channels" id="channels"></div>
-      <p class="sec-h">Full inflight catalogue</p>
-      <div class="lang-row" id="lang-row">
-        <button type="button" data-lang="all" class="on">All</button>
-        <button type="button" data-lang="Hindi">Hindi</button>
-        <button type="button" data-lang="Punjabi">Punjabi</button>
-        <button type="button" data-lang="English">English</button>
+    </section>
+
+    <!-- ============ BOARDING ============ -->
+    <section id="boarding" class="boarding">
+      <div class="pass" id="pass">
+        <div class="pass-head"><span>BOARDING PASS</span><span class="pass-flight">CG-2409</span></div>
+        <div class="pass-name" id="pass-name">PICK A SEAT</div>
+        <div class="pass-row"><span>SEAT</span><b id="pass-seat">—</b></div>
+        <div class="pass-row"><span>YOU ARE</span><b id="my-seat">—</b></div>
+        <div class="pass-strip"></div>
       </div>
-      <div class="song-list" id="song-list"></div>
+      <h2 class="sec-title">Choose your seat</h2>
+      <div id="seat-select" class="seat-grid"></div>
+      <button id="btn-board" class="board-btn" disabled>PICK A SEAT FIRST</button>
+    </section>
+
+    <!-- ============ IN-FLIGHT (game) ============ -->
+    <div id="app" class="app hidden">
+      <nav id="nav" class="nav">
+        <div id="nav-links" class="nav-links">
+          <a data-jump="home" class="active">Home</a>
+          <a data-jump="missions">Missions</a>
+          <a data-jump="ml">Most Likely</a>
+          <a data-jump="bingo">Bingo</a>
+          <a data-jump="vote">Vote</a>
+          <a data-jump="passport">Passport</a>
+          <a data-jump="music">GOA FM</a>
+          <a data-jump="wrapped">Wrapped</a>
+        </div>
+      </nav>
+
+      <div id="chapter-banner" class="chapter-banner"></div>
+
+      <section id="home" class="panel">
+        <div id="dash-head" class="dash-head"></div>
+        <div class="dash-grid">
+          <div id="dash-mission" class="card dash-card"></div>
+          <div id="dash-vote" class="card dash-card"></div>
+          <div id="dash-game" class="card dash-card"></div>
+          <div class="card dash-card"><p class="sec-h">📡 CABIN FEED</p><div id="dash-activity" class="feed"></div></div>
+        </div>
+      </section>
+
+      <section id="missions" class="panel"><h2 class="sec-title">🎯 Secret Missions</h2><div id="mission-list" class="mission-list"></div></section>
+
+      <section id="ml" class="panel"><h2 class="sec-title">🎮 Most Likely To…</h2><div id="ml-stage" class="ml-stage"></div></section>
+
+      <section id="bingo" class="panel"><h2 class="sec-title">🎲 Goa Bingo</h2><div id="bingo-grid" class="bingo-grid"></div></section>
+
+      <section id="vote" class="panel"><h2 class="sec-title">🗳 Tonight's Vote</h2><div id="poll-box" class="poll-box"></div></section>
+
+      <section id="passport" class="panel"><h2 class="sec-title">🛂 Passport &amp; Badges</h2><div id="passport-box"></div><div id="ach-grid" class="ach-grid"></div></section>
+
+      <section id="music" class="panel"><h2 class="sec-title">🎶 GOA FM — Full Library</h2><div id="song-list" class="song-list"></div></section>
+
+      <section id="wrapped" class="panel"><h2 class="sec-title">🎁 Trip Wrapped</h2><div id="wrapped-box"></div></section>
     </div>
-  </section>
-</main>
 
-<button class="attendant hidden" id="btn-ping" type="button" aria-label="Ping crew">🔔</button>
-<div class="dossier hidden" id="dossier" role="dialog" aria-modal="true"></div>
-<div class="confetti" id="confetti" aria-hidden="true"></div>
-<div class="toast hidden" id="toast"></div>
-<div class="grain" aria-hidden="true"></div>
+    <div id="takeoff" class="takeoff hidden"><div class="tk-card"><div id="tk-line" class="tk-line">DOORS CLOSING</div><div class="tk-plane">✈</div></div></div>
+  </main>
 
-<script src="vendor/supabase-js.js"></script>
-<script src="config.js"></script>
-<script src="supabase-client.js"></script>
-<script src="songs.js"></script>
-<script src="data.js"></script>
-<script src="content.js"></script>
-<script src="store.js"></script>
-<script src="game.js"></script>
+  <div id="toast" class="toast hidden"></div>
+  <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+  <div id="yt-player" style="position:absolute;left:-9999px;width:1px;height:1px"></div>
+
+  <script src="vendor/supabase-js.js"></script>
+  <script src="config.js"></script>
+  <script src="supabase-client.js"></script>
+  <script src="songs.js"></script>
+  <script src="data.js"></script>
+  <script src="content.js"></script>
+  <script src="store.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
