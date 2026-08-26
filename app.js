@@ -198,7 +198,9 @@ function tickClocks() {
 
   const belt = $("#seatbelt");
   if (belt) {
-    if (now < start) belt.textContent = "BOARDING";
+    const inCabin = !$("#cabin").classList.contains("hidden");
+    if (inCabin) belt.textContent = now > end ? "LANDED" : "IN CABIN";
+    else if (now < start) belt.textContent = "BOARDING";
     else if (now > end) belt.textContent = "LANDED";
     else belt.textContent = "FASTEN SEATBELTS";
   }
