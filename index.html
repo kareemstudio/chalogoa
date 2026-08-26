@@ -1,242 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1f3a" />
-  <title>CHALO GOA — Road Trip to Goa</title>
-  <meta name="description" content="CHALO GOA · 24 Sep - 27 Sep · Kareem Birthday · 5 friends, 4 days, Goa, music and madness." />
-  <link rel="icon" href="icon.svg" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071522">
+<title>CHALO GOA</title>
+<link rel="icon" href="icon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
-    <span class="sun"></span><span class="orb o1"></span><span class="orb o2"></span>
-    <span class="palm p1">🌴</span><span class="palm p2">🌴</span><span class="palm p3">🌴</span>
-    <span class="balloon b1">🎈</span><span class="balloon b2">🎉</span><span class="balloon b3">🎂</span>
-  </div>
-  <div id="err" class="err-banner" style="display:none"></div>
-
-  <!-- TOP BAR -->
+<div id="app">
   <header class="topbar">
-    <div class="brand">CHALO&nbsp;GOA</div>
-    <button id="btn-menu" class="icon-btn" aria-label="Menu">☰</button>
+    <div class="brand">CHALO GOA</div>
+    <div class="topmeta">24 Sep - 27 Sep<br>Kareem Birthday</div>
   </header>
 
-  <main id="views">
-    <!-- HOME -->
-    <section class="view active" id="view-home">
+  <main>
+    <section class="screen active" id="home">
       <div class="hero">
-        <div class="hero-road"><span class="road-line"></span><span class="hero-car">🚗</span><span class="hero-goa">GOA</span></div>
-        <h1 class="hero-title">CHALO GOA</h1>
-        <div class="hero-dates">24 Sep - 27 Sep</div>
-        <p class="hero-sub">5 Friends • 4 Days • Goa • Music • Birthday • Madness</p>
-        <div class="badge-bday">🎂 Kareem Birthday</div>
-        <div class="hero-cta">
-          <button class="btn btn-primary" id="cta-trip">▶ START THE ROAD TRIP</button>
-          <button class="btn btn-ghost" id="cta-radio">🎵 OPEN GOA RADIO</button>
-        </div>
-        <div class="trip-card">
-          <div><b>5 Friends</b><span>Crew</span></div>
-          <div><b>24 Sep - 27 Sep</b><span>Dates</span></div>
-          <div><b>Kareem Birthday</b><span>Occasion</span></div>
-          <div><b>Goa</b><span>Destination</span></div>
-        </div>
-        <div class="stickers">
-          <span class="sticker s1">ROAD TRIP MODE ON</span>
-          <span class="sticker s2">GOA CALLING</span>
-          <span class="sticker s3">PLAYLIST READY</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CREW -->
-    <section class="view" id="view-crew">
-      <h2 class="page-h">THE GOA CREW</h2>
-      <p class="page-sub">5 people. Unlimited chaos.</p>
-      <div class="crew-scroll" id="crew-list"></div>
-    </section>
-
-    <!-- RADIO -->
-    <section class="view" id="view-radio">
-      <h2 class="page-h">CHALO GOA RADIO 🎵</h2>
-      <p class="page-sub">Road Trip Mode: ON</p>
-      <div class="lang-sel" id="lang-sel"></div>
-      <div class="stereo">
-        <div class="led"><span id="led-title">CHALO GOA RADIO</span><small id="led-sub">ROAD TRIP MODE</small></div>
-        <div class="eq" id="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="np">
-          <img id="r-cover" class="np-cover" src="icon.svg" alt="art" />
-          <div class="np-meta"><div id="r-title" class="np-title">—</div><div id="r-artist" class="np-artist">—</div><div id="r-lang" class="np-lang">—</div></div>
-        </div>
-        <div class="bar"><div class="bar-fill" id="r-bar"></div></div>
-        <div class="times"><span id="r-cur">0:00</span><span id="r-dur">0:00</span></div>
-        <div class="controls">
-          <button class="c-btn" id="r-prev" title="Previous">⏮</button>
-          <button class="c-btn c-play" id="r-play" title="Play/Pause">▶</button>
-          <button class="c-btn" id="r-next" title="Next">⏭</button>
-        </div>
-        <div class="controls sub">
-          <button class="c-btn sm" id="r-shuffle" title="Shuffle">🔀</button>
-          <button class="c-btn sm" id="r-repeat" title="Repeat">🔁</button>
-          <button class="c-btn sm" id="r-fav" title="Favourite">♥</button>
-          <span class="vol">🔊<input id="r-vol" type="range" min="0" max="100" value="80" /></span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLAYLIST -->
-    <section class="view" id="view-playlist">
-      <h2 class="page-h">ROAD TRIP PLAYLIST</h2>
-      <div class="lang-chips" id="pl-chips"></div>
-      <button class="btn btn-ghost full" id="pl-shuffle">🔀 Shuffle Road Trip</button>
-      <div id="playlist"></div>
-    </section>
-
-    <!-- BIRTHDAY -->
-    <section class="view" id="view-birthday">
-      <h2 class="page-h">KAREEM BIRTHDAY 🎂</h2>
-      <p class="page-sub">Goa + Birthday = Dangerous Combination 😎</p>
-      <div class="bday-card" id="bday-card">
-        <div class="bday-cake">🎂</div>
-        <div class="bday-title">Kareem Birthday</div>
-        <div class="bday-dates">24 Sep - 27 Sep</div>
-        <button class="btn btn-primary" id="bday-activate">🎉 ACTIVATE BIRTHDAY MODE</button>
-        <div class="bday-mode" id="bday-mode">BIRTHDAY MODE: ON</div>
-      </div>
-      <p class="muted center">Birthday messages &amp; gallery loading after the madness begins…</p>
-    </section>
-
-    <!-- JOURNEY -->
-    <section class="view" id="view-journey">
-      <h2 class="page-h">THE ROAD TO GOA</h2>
-      <p class="page-sub">Petrol Full. Playlist Ready. Goa Loading…</p>
-      <div class="road" id="road">
-        <div class="road-line"></div>
-        <div class="car" id="road-car">🚗</div>
-        <div class="stop" data-stop><span class="stop-ic">🏠</span><b>HOME</b></div>
-        <div class="stop"><span class="stop-ic">🛣️</span><b>HIGHWAY</b></div>
-        <div class="stop"><span class="stop-ic">☕</span><b>COFFEE</b></div>
-        <div class="stop"><span class="stop-ic">🎵</span><b>MUSIC</b></div>
-        <div class="stop"><span class="stop-ic">🌴</span><b>GOA</b></div>
-        <div class="stop"><span class="stop-ic">🌊</span><b>BEACH</b></div>
-        <div class="stop"><span class="stop-ic">🎂</span><b>BIRTHDAY</b></div>
-        <div class="stop"><span class="stop-ic">📸</span><b>MEMORIES</b></div>
-      </div>
-    </section>
-
-    <!-- VIBES -->
-    <section class="view" id="view-vibes">
-      <h2 class="page-h">GOA VIBES 🌴</h2>
-      <div class="vibes-grid" id="vibes-grid"></div>
-    </section>
-
-    <!-- MEMORIES -->
-    <section class="view" id="view-memories">
-      <h2 class="page-h">GOA MEMORIES</h2>
-      <p class="page-sub">Photos loading after the madness begins…</p>
-      <div class="mem-grid" id="mem-grid"></div>
-    </section>
-
-    <!-- WHATSAPP -->
-    <section class="view" id="view-whatsapp">
-      <h2 class="page-h">THE GOA GROUP 💬</h2>
-      <p class="page-sub">All plans, chaos and last-minute decisions happen here.</p>
-      <div class="wa-card">
-        <div class="wa-top"><span class="wa-ic">💬</span><div><b>CHALO GOA</b><small>24 Sep - 27 Sep · Kareem Birthday</small></div></div>
-        <p class="wa-text">See you in the group. 🌴</p>
-        <a class="btn btn-primary full" id="wa-join" href="https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW" target="_blank" rel="noopener"># JOIN THE GOA GROUP 💬</a>
-      </div>
-    </section>
-
-    <!-- TRIP PASS -->
-    <section class="view" id="view-pass">
-      <h2 class="page-h">CHALO GOA PASS</h2>
-      <div class="ticket">
-        <div class="ticket-main">
-          <div class="t-row"><span>CHALO GOA</span><b>ROAD TRIP PASS</b></div>
-          <div class="t-grid">
-            <div><small>Dates</small><b>24 Sep - 27 Sep</b></div>
-            <div><small>Crew</small><b>5 Friends</b></div>
-            <div><small>Occasion</small><b>Kareem Birthday</b></div>
-            <div><small>Destination</small><b>GOA</b></div>
+        <div class="sun"></div><div class="horizon"></div><div class="ocean"></div><div class="road"></div>
+        <div class="palm a">🌴</div><div class="palm b">🌴</div><div class="car">🚙</div>
+        <div class="home-copy">
+          <div class="tiny">PRIVATE ROAD TRIP • GOA</div>
+          <div class="home-title">CHALO<br>GOA</div>
+          <div class="home-date">24 Sep - 27 Sep</div>
+          <div class="home-desc">5 Friends • 4 Days • Goa • Music • Birthday • Madness</div>
+          <div class="bday-badge">🎂 Kareem Birthday</div>
+          <div class="home-actions">
+            <button class="btn primary" data-go="radio">▶ START THE ROAD TRIP</button>
+            <button class="btn ghost" data-go="radio">🎵 OPEN GOA RADIO</button>
           </div>
-          <div class="t-status">STATUS: ROAD TRIP READY</div>
-        </div>
-        <div class="ticket-stub">
-          <div class="stub-badge">🎂</div>
-          <div class="stub-qr" aria-hidden="true"></div>
-          <div class="stub-text">DESTINATION:<br><b>GOA</b></div>
         </div>
       </div>
+      <div class="home-status">
+        <div>5 Friends<small>CREW</small></div><div>4 Days<small>TRIP</small></div><div>Kareem<small>BIRTHDAY</small></div><div>Goa<small>DESTINATION</small></div>
+      </div>
+    </section>
+
+    <section class="screen" id="crew">
+      <div class="kicker">The people</div><h1 class="title">THE GOA CREW</h1><p class="sub">5 people. Unlimited chaos.</p>
+      <div class="crew-stack" id="crew-list"></div>
+    </section>
+
+    <section class="screen" id="radio">
+      <div class="kicker">Signature screen</div><h1 class="title">CHALO GOA<br>RADIO 🎵</h1><p class="sub">Road Trip Mode: ON</p>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-lang="hindi">HINDI</button>
+        <button class="tab" data-lang="punjabi">PUNJABI</button>
+        <button class="tab" data-lang="english">ENGLISH</button>
+      </div>
+      <div class="stereo" id="stereo">
+        <div class="display"><h3>CHALO GOA RADIO</h3><small>ROAD TRIP MODE</small><div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="now"><div class="cover"></div><div><b id="np-title">Road Trip Track</b><span id="np-artist">Placeholder Artist • Hindi</span></div></div>
+        <div class="progress"><b id="np-fill"></b></div>
+        <div class="times"><span id="np-cur">0:00</span><span id="np-dur">0:00</span></div>
+        <div class="player-controls"><button class="round" id="prev">⏮</button><button class="round play" id="play">▶</button><button class="round" id="next">⏭</button></div>
+        <div class="radio-utils">
+          <button class="util" id="shuffle" title="Shuffle">🔀</button>
+          <button class="util" id="repeat" title="Repeat">🔁</button>
+          <button class="util" id="fav" title="Favourite">♡</button>
+          <span class="vol">🔊<input id="vol" type="range" min="0" max="100" value="80"></span>
+        </div>
+      </div>
+      <div class="playlist-head"><b>ROAD TRIP PLAYLIST</b><button id="shuffleRoad">SHUFFLE ROAD TRIP</button></div>
+      <div class="tracks" id="playlist"></div>
+    </section>
+
+    <section class="screen" id="birthday">
+      <div class="kicker">Special occasion</div><h1 class="title">KAREEM<br>BIRTHDAY 🎂</h1><p class="sub">Goa + Birthday = Dangerous Combination 😎</p>
+      <div class="bday-card">
+        <div class="mode" id="mode">BIRTHDAY MODE: OFF</div><h3>Kareem<br>Birthday</h3><p><b>24 Sep - 27 Sep</b></p>
+        <button class="btn primary" id="partyBtn">🎉 ACTIVATE BIRTHDAY MODE</button><div class="cake">🎂</div>
+      </div>
+      <div class="confetti"><i style="left:8%;animation-delay:.45s">✨</i><i style="left:19%;animation-delay:.6s">🎉</i><i style="left:30%;animation-delay:0s">✨</i><i style="left:41%;animation-delay:.15s">🎉</i><i style="left:52%;animation-delay:.3s">✨</i><i style="left:63%;animation-delay:.45s">🎉</i><i style="left:74%;animation-delay:.6s">✨</i><i style="left:85%;animation-delay:0s">🎉</i></div>
+    </section>
+
+    <section class="screen" id="group">
+      <div class="kicker">Official group</div><h1 class="title">GOA GROUP 💬</h1><p class="sub">All plans, chaos and last-minute decisions happen here.</p>
+      <div class="group-hero"><div class="chat">💬</div><h3>CHALO GOA</h3><p>24 Sep - 27 Sep<br>Kareem Birthday</p><a class="btn primary" href="https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW" target="_blank" rel="noopener">JOIN THE GOA GROUP 💬</a><p>See you in the group. 🌴</p></div>
     </section>
   </main>
 
-  <!-- NOW PLAYING -->
-  <div class="overlay" id="nowplaying">
-    <div class="np-bg" id="np-bg"></div>
-    <button class="np-close" id="np-close">▼</button>
-    <div class="np-fixed">
-      <div class="np-big-wrap"><img id="np-big" class="np-big" src="icon.svg" alt="art" /></div>
-      <div class="np-top">CHALO GOA RADIO</div>
-      <div id="np-title" class="np-big-title">—</div>
-      <div id="np-artist" class="np-big-artist">—</div>
-      <div class="np-bar"><div class="np-bar-fill" id="np-bar"></div></div>
-      <div class="np-times"><span id="np-cur">0:00</span><span id="np-dur">0:00</span></div>
-      <div class="np-controls">
-        <button class="c-btn" id="np-shuffle" title="Shuffle">🔀</button>
-        <button class="c-btn" id="np-prev" title="Previous">⏮</button>
-        <button class="c-btn c-play" id="np-play" title="Play/Pause">▶</button>
-        <button class="c-btn" id="np-next" title="Next">⏭</button>
-        <button class="c-btn" id="np-repeat" title="Repeat">🔁</button>
-      </div>
-      <div class="np-bottom">
-        <span class="np-vol">🔊<input id="np-vol" type="range" min="0" max="100" value="80" /></span>
-        <button class="c-btn sm" id="np-fav" title="Favourite">♥</button>
-        <span id="np-lang" class="np-lang-pill">Hindi</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- FULL MENU -->
-  <div class="overlay menu" id="menu">
-    <button class="menu-close" id="menu-close">✕</button>
-    <nav class="menu-nav">
-      <a data-view="home">HOME</a><a data-view="crew">CREW</a><a data-view="radio">RADIO</a>
-      <a data-view="playlist">PLAYLIST</a><a data-view="birthday">BIRTHDAY</a><a data-view="journey">JOURNEY</a>
-      <a data-view="vibes">VIBES</a><a data-view="memories">MEMORIES</a><a data-view="whatsapp">WHATSAPP</a><a data-view="pass">PASS</a>
-    </nav>
-    <div class="menu-foot"><span>CHALO GOA</span><small>24 Sep - 27 Sep</small><div class="eq mini" id="menu-eq"><i></i><i></i><i></i><i></i><i></i></div></div>
-  </div>
-
-  <!-- MINI PLAYER -->
-  <div class="mini" id="mini">
-    <img id="m-cover" class="m-cover" src="icon.svg" alt="art" />
-    <div class="m-meta"><div id="m-title" class="m-title">—</div><div id="m-artist" class="m-artist">—</div></div>
-    <div class="m-wave" id="m-wave"><i></i><i></i><i></i><i></i></div>
-    <button class="c-btn" id="m-play" title="Play/Pause">▶</button>
-    <button class="c-btn" id="m-next" title="Next">⏭</button>
-  </div>
-
-  <!-- BOTTOM NAV -->
-  <nav class="bottomnav" id="bottomnav">
-    <button class="bn active" data-view="home"><span>🏠</span>Home</button>
-    <button class="bn" data-view="crew"><span>👥</span>Crew</button>
-    <button class="bn" data-view="radio"><span>🎵</span>Radio</button>
-    <button class="bn" data-view="birthday"><span>🎂</span>Birthday</button>
-    <button class="bn" data-view="whatsapp"><span>💬</span>Group</button>
+  <nav class="nav">
+    <button class="active" data-go="home"><span>🏠</span>Home</button>
+    <button data-go="crew"><span>👥</span>Crew</button>
+    <button data-go="radio"><span>🎵</span>Radio</button>
+    <button data-go="birthday"><span>🎂</span>Birthday</button>
+    <button data-go="group"><span>💬</span>Group</button>
+    <button id="moreBtn"><span>☰</span>More</button>
   </nav>
 
-  <div id="toast" class="toast hidden"></div>
-  <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
-  <div style="position:absolute;left:-9999px;top:0;width:1px;height:1px"><div id="yt-player"></div></div>
+  <aside class="sheet" id="more">
+    <button class="iconbtn sheet-close" id="closeMore">✕</button>
+    <div id="moreMenu">
+      <div class="kicker">More of the trip</div><h2 class="title">EXPLORE</h2><p class="sub">Extra trip screens stay separate instead of being mixed into the main flow.</p>
+      <div class="more-grid">
+        <button class="more-card" data-detail="journey"><span>🛣️</span><b>THE ROAD TO GOA</b></button>
+        <button class="more-card" data-detail="vibes"><span>🌴</span><b>GOA VIBES</b></button>
+        <button class="more-card" data-detail="memories"><span>📸</span><b>GOA MEMORIES</b></button>
+        <button class="more-card" data-detail="pass"><span>🎟️</span><b>CHALO GOA PASS</b></button>
+      </div>
+    </div>
 
-  <script src="songs.js"></script>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+    <div class="detail" id="detail-journey"><div class="kicker">Trip journey</div><h2 class="title">THE ROAD TO GOA</h2><p class="sub">Petrol Full. Playlist Ready. Goa Loading…</p><div class="journey"><div class="stop">HOME</div><div class="stop">HIGHWAY</div><div class="stop">COFFEE</div><div class="stop">MUSIC</div><div class="stop">GOA</div><div class="stop">BEACH</div><div class="stop">BIRTHDAY</div><div class="stop">MEMORIES</div></div></div>
+    <div class="detail" id="detail-vibes"><div class="kicker">Editorial collage</div><h2 class="title">GOA VIBES 🌴</h2><div class="vibes-grid"><div class="vibe">No Meetings. Only Beaches.</div><div class="vibe">Sleep Later. Goa First.</div><div class="vibe">Playlist &gt; Problems</div></div></div>
+    <div class="detail" id="detail-memories"><div class="kicker">Polaroid archive</div><h2 class="title">GOA MEMORIES</h2><p class="sub">Photos loading after the madness begins…</p><div class="memory-grid"><div class="pol"><div class="ph">📷</div><b>DAY 1</b></div><div class="pol"><div class="ph">📷</div><b>DAY 2</b></div><div class="pol"><div class="ph">📷</div><b>DAY 3</b></div><div class="pol"><div class="ph">📷</div><b>DAY 4</b></div></div></div>
+    <div class="detail" id="detail-pass"><div class="kicker">Collectible</div><h2 class="title">CHALO GOA PASS</h2><div class="pass"><small>PRIVATE ROAD TRIP PASS</small><h3>CHALO GOA</h3><div class="pass-grid"><div><small>DATE</small><b>24 Sep - 27 Sep</b></div><div><small>TRAVELLERS</small><b>5 Friends</b></div><div><small>OCCASION</small><b>Kareem Birthday</b></div><div><small>DESTINATION</small><b>GOA</b></div></div><small>STATUS</small><b>ROAD TRIP READY</b><div class="barcode"></div></div></div>
+  </aside>
+
+  <div id="err" class="err"></div>
+  <div id="toast" class="toast hidden"></div>
+  <div style="position:absolute;left:-9999px;top:0;width:1px;height:1px"><div id="yt-player"></div></div>
+</div>
+
+<script src="songs.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
