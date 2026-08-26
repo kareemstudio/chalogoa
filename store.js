@@ -37,6 +37,8 @@ window.DB = (function () {
     push(client().from("activities").insert(rec));
   }
 
+  function getActivities() { return load("activities", []); }
+
   function seed() {
     if (!window.TRIP || !window.CG_CONTENT) return;
     if (!load("profiles", null)) save("profiles", window.TRIP.friends.map((f, i) => ({ id: f.id, name: f.name, avatar: f.emoji, seat: SEAT[i] || ("1" + (i + 1)), chaos_miles: 0, level: 1, votes_recv: 0, missions_done: 0, predictions_won: 0 })));
