@@ -2,6 +2,8 @@
 const RADIO = window.GOA_RADIO;
 const TRIP = window.TRIP;
 const CH_NO = { highway: "01", shack: "02", sunset: "03", tito: "04", birthday: "05" };
+const SEAT_CODE = ["1A", "1B", "1C", "1D", "1E"];
+const ME_KEY = "airChaloSeat";
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -15,17 +17,23 @@ let current = null;
 let langFilter = "all";
 let dayIndex = 0;
 let paTimer = 0;
+let myFriendId = localStorage.getItem(ME_KEY) || "";
 
 const PA = [
   "Cabin crew, prepare for takeoff. Aux is armed.",
   "The captain has turned on the party sign.",
-  "We are cruising at one birthday and unlimited bad decisions.",
+  "Cruising at one birthday and unlimited bad decisions.",
   "In the event of a good time, scream the chorus.",
   "Scooters on the left. Shacks on the right. Cake overhead.",
   "Goa time is the only time that matters in this cabin.",
-  "Please keep your seatbelt fastened until Kareem blows the candles.",
-  "Connecting flight: Highway to Tito’s, with a sunset layover."
+  "Keep your seatbelt fastened until Kareem blows the candles.",
+  "Connecting flight: Highway to Tito’s, with a sunset layover.",
+  "Hindi. Punjabi. English. No algorithm. No mercy."
 ];
+
+function me() {
+  return TRIP.friends.find((f) => f.id === myFriendId);
+}
 
 function istParts(d = new Date()) {
   const o = {};
@@ -44,16 +52,10 @@ function istParts(d = new Date()) {
   return o;
 }
 
-function istDate() {
-  const p = istParts();
-  return new Date(`${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:${p.second}+05:30`);
-}
-
 function clockRotId() {
   const p = istParts();
   const h = Number(p.hour);
-  const isBday = p.month === "09" && p.day === "25";
-  if (isBday) return "birthday";
+  if (p.month === "09" && p.day === "25") return "birthday";
   if (h >= 21 || h < 5) return "tito";
   if (h < 11) return "highway";
   if (h < 17) return "shack";
@@ -68,13 +70,11 @@ function songsFor(rotId) {
   return RADIO.songs.filter((s) => s.rotation === rotId);
 }
 
-function loopIndex(rotId, extraSec = 0) {
+function loopIndex(rotId) {
   const list = songsFor(rotId);
   const total = list.reduce((n, s) => n + (s.dur || 180), 0) || 1;
   const p = istParts();
-  const sec =
-    Number(p.hour) * 3600 + Number(p.minute) * 60 + Number(p.second) + extraSec;
-  let t = ((sec % total) + total) % total;
+  let t = (Number(p.hour) * 3600 + Number(p.minute) * 60 + Number(p.second)) % total;
   for (let i = 0; i < list.length; i++) {
     const d = list[i].dur || 180;
     if (t < d) return { song: list[i], offset: t, i };
@@ -85,9 +85,7 @@ function loopIndex(rotId, extraSec = 0) {
 
 function fmt(sec) {
   sec = Math.max(0, Math.floor(sec || 0));
-  const m = Math.floor(sec / 60);
-  const s = sec % 60;
-  return `${m}:${String(s).padStart(2, "0")}`;
+  return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
 }
 
 function coverUrl(id) {
@@ -102,9 +100,23 @@ function toast(msg) {
   toast._t = setTimeout(() => el.classList.add("hidden"), 2200);
 }
 
+function zap() {
+  const z = $("#zap");
+  if (!z) return;
+  z.classList.remove("go");
+  void z.offsetWidth;
+  z.classList.add("go");
+}
+
+function setMood(rotId) {
+  $("#cabin").dataset.mood = rotId || "highway";
+}
+
 function paintSong(song, rotId) {
   current = song;
   const rot = rotById(rotId || song.rotation);
+  setMood(rot.id);
+  zap();
   $("#cover").src = coverUrl(song.id);
   $("#cover").onerror = () => { $("#cover").src = "icon.svg"; };
   $("#song-title").textContent = song.title;
@@ -141,8 +153,7 @@ function skip(dir) {
   const rot = current ? current.rotation : clockRotId();
   const list = songsFor(rot);
   const i = Math.max(0, list.findIndex((s) => s.id === current?.id));
-  const next = list[(i + dir + list.length) % list.length];
-  loadSong(next, 0, true);
+  loadSong(list[(i + dir + list.length) % list.length], 0, true);
   playing = true;
   syncPlayBtn();
 }
@@ -156,7 +167,8 @@ function setChannel(id) {
 }
 
 function syncPlayBtn() {
-  $("#btn-play").textContent = playing ? "❚❚ PAUSE" : "▶ PLAY";
+  $("#btn-play").textContent = playing ? "❚❚ PAUSE" : "▶ ARM AUX";
+  $("#disc").classList.toggle("spin", playing);
 }
 
 function tickProgress() {
@@ -167,7 +179,18 @@ function tickProgress() {
     $("#bar").style.width = `${Math.min(100, (t / d) * 100)}%`;
     $("#t-cur").textContent = fmt(t);
     $("#t-dur").textContent = fmt(d);
-  } catch (e) { /* player not ready */ }
+  } catch (e) { /* ignore */ }
+}
+
+function flightProgress() {
+  const start = new Date(TRIP.start).getTime();
+  const end = new Date(TRIP.end).getTime();
+  const now = Date.now();
+  const lead = 60 * 86400000;
+  if (now >= end) return 1;
+  if (now >= start) return 0.18 + 0.72 * ((now - start) / (end - start));
+  const p = 1 - (start - now) / lead;
+  return Math.max(0.04, Math.min(0.18, p * 0.18));
 }
 
 function tickClocks() {
@@ -189,12 +212,29 @@ function tickClocks() {
   }
   const gateLbl = $("#gate-cd-lbl");
   if (gateLbl) gateLbl.textContent = lbl;
-  const days = Math.floor(ms / 86400000);
-  const hrs = Math.floor((ms % 86400000) / 3600000);
-  const mins = Math.floor((ms % 3600000) / 60000);
-  const secs = Math.floor((ms % 60000) / 1000);
   const set = (id, v) => { const n = document.getElementById(id); if (n) n.textContent = String(v).padStart(2, "0"); };
-  set("g-d", days); set("g-h", hrs); set("g-m", mins); set("g-s", secs);
+  set("g-d", Math.floor(ms / 86400000));
+  set("g-h", Math.floor((ms % 86400000) / 3600000));
+  set("g-m", Math.floor((ms % 3600000) / 60000));
+  set("g-s", Math.floor((ms % 60000) / 1000));
+
+  const prog = flightProgress();
+  const fill = $("#route-fill");
+  const plane = $("#route-plane");
+  if (fill) fill.style.width = `${prog * 100}%`;
+  if (plane) plane.style.left = `${prog * 100}%`;
+  const cap = $("#route-cap");
+  if (cap) {
+    cap.textContent = now > end
+      ? "Arrived. Sand in the overhead bin."
+      : now >= start
+        ? "Over water. Do not look down. Look at the aux."
+        : "Taxiing toward 24 September.";
+  }
+  const gs = $("#gs");
+  if (gs) gs.textContent = String(420 + Math.floor((Number(p.second) % 20)));
+  const alt = $("#alt");
+  if (alt) alt.textContent = now >= start && now <= end ? "FL350" : now > end ? "GND" : "TAXI";
 
   const belt = $("#seatbelt");
   if (belt) {
@@ -219,25 +259,51 @@ function tickClocks() {
   }
 }
 
+function renderSeatmap() {
+  $("#seatmap").innerHTML = TRIP.friends.map((f, i) => `
+    <button type="button" class="seat-btn ${myFriendId === f.id ? "on" : ""}" data-id="${f.id}">
+      <small>${SEAT_CODE[i]}</small>${esc(f.emoji)}
+    </button>`).join("");
+  $$("#seatmap .seat-btn").forEach((b) => {
+    b.onclick = () => {
+      myFriendId = b.dataset.id;
+      localStorage.setItem(ME_KEY, myFriendId);
+      syncPass();
+      renderSeatmap();
+      renderSeats();
+    };
+  });
+}
+
+function syncPass() {
+  const f = me();
+  const idx = TRIP.friends.findIndex((x) => x.id === myFriendId);
+  $("#pass-name").textContent = f ? f.name.toUpperCase() : "PICK A SEAT";
+  $("#pass-seat").textContent = idx >= 0 ? SEAT_CODE[idx] : "—";
+  $("#btn-board").disabled = !f;
+  $("#btn-board").textContent = f ? `BOARD AS ${f.nick.toUpperCase()} →` : "PICK A SEAT FIRST";
+  const mine = $("#my-seat");
+  if (mine) mine.textContent = idx >= 0 ? SEAT_CODE[idx] : "—";
+}
+
 function renderChannels() {
   $("#channels").innerHTML = RADIO.rotations.map((r) => `
     <button type="button" class="ch" data-id="${r.id}">
       <span class="n">CH ${CH_NO[r.id]} ${r.emoji}</span>
       <span class="nm">${esc(r.name)}</span>
       <span class="hr">${esc(r.hours)}</span>
+      <span class="vb">${esc(r.vibe)}</span>
     </button>`).join("");
-  $$("#channels .ch").forEach((b) => {
-    b.onclick = () => setChannel(b.dataset.id);
-  });
+  $$("#channels .ch").forEach((b) => { b.onclick = () => setChannel(b.dataset.id); });
 }
 
 function renderSeats() {
   $("#seats").innerHTML = TRIP.friends.map((f, i) => `
-    <div class="seat">
+    <div class="seat ${f.id === myFriendId ? "me" : ""}">
       <div class="em">${f.emoji}</div>
       <div class="nm">${esc(f.name)}</div>
-      <div class="nk">${esc(f.nick)} · ${String.fromCharCode(65 + i)}1</div>
-      <div class="tt">${esc(f.title)}</div>
+      <div class="nk">${esc(f.nick)} · ${SEAT_CODE[i]}</div>
+      <div class="tt">${esc(f.title)} · ${esc(f.power)}</div>
     </div>`).join("");
 }
 
@@ -252,7 +318,7 @@ function renderDays() {
   $("#safety-card").innerHTML = `
     <h4>${esc(d.date)} · ${esc(d.title)}</h4>
     <p class="sub">${esc(d.line)}</p>
-    ${d.slots.map((s) => `<div class="slot"><span>${s.i}</span><div><b>${esc(s.t)}</b>${esc(s.x)}</div></div>`).join("")}
+    ${d.slots.map((s) => `<div class="slot"><span class="ico">${s.i}</span><div><b>${esc(s.t)}</b>${esc(s.x)}</div></div>`).join("")}
   `;
 }
 
@@ -270,9 +336,8 @@ function renderSongs() {
     </button>`).join("");
   $$("#song-list .song").forEach((b) => {
     b.onclick = () => {
-      const song = RADIO.songs.find((s) => s.id === b.dataset.id);
       liveClock = false;
-      loadSong(song, 0, true);
+      loadSong(RADIO.songs.find((s) => s.id === b.dataset.id), 0, true);
       playing = true;
       syncPlayBtn();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -284,21 +349,39 @@ function cyclePA() {
   const el = $("#pa");
   if (!el) return;
   let i = 0;
-  el.textContent = PA[0];
+  el.textContent = PA[0] + "   ·   " + PA[1] + "   ·   " + PA[2] + "   ·   ";
   clearInterval(paTimer);
   paTimer = setInterval(() => {
     i = (i + 1) % PA.length;
-    el.textContent = PA[i];
-  }, 7000);
+    el.textContent = PA.slice(i).concat(PA.slice(0, i)).join("   ·   ") + "   ·   ";
+  }, 18000);
 }
 
 function board() {
-  $("#gate").classList.add("hidden");
-  $("#cabin").classList.remove("hidden");
-  window.scrollTo(0, 0);
-  cyclePA();
-  const starter = loopIndex(clockRotId());
-  paintSong(starter.song, starter.song.rotation);
+  if (!me()) { toast("Pick a seat first"); return; }
+  $("#pass").classList.add("tear");
+  const lines = ["DOORS CLOSING", "CABIN LIGHTS", "AUX ARMED"];
+  const ov = $("#takeoff");
+  ov.classList.remove("hidden");
+  let n = 0;
+  $("#tk-line").textContent = lines[0];
+  const iv = setInterval(() => {
+    n += 1;
+    if (n < lines.length) $("#tk-line").textContent = lines[n];
+    else {
+      clearInterval(iv);
+      ov.classList.add("hidden");
+      $("#gate").classList.add("hidden");
+      $("#cabin").classList.remove("hidden");
+      $("#pass").classList.remove("tear");
+      window.scrollTo(0, 0);
+      cyclePA();
+      syncPass();
+      const starter = loopIndex(clockRotId());
+      paintSong(starter.song, starter.song.rotation);
+      setMood(clockRotId());
+    }
+  }, 700);
 }
 
 function bind() {
@@ -306,10 +389,11 @@ function bind() {
   $("#btn-gate").onclick = () => {
     $("#cabin").classList.add("hidden");
     $("#gate").classList.remove("hidden");
+    $("#pass").classList.remove("tear");
   };
   $("#btn-play").onclick = () => {
     if (!ytReady) {
-      toast("Cabin screen warming up… tap again in a second");
+      toast("Cabin screen warming up… tap again");
       return;
     }
     if (!current) playLive();
@@ -325,6 +409,16 @@ function bind() {
   $("#btn-next").onclick = () => skip(1);
   $("#btn-prev").onclick = () => skip(-1);
   $("#btn-live").onclick = () => { playLive(); toast("Locked to Goa time"); };
+  $("#scrub").onclick = (e) => {
+    if (!player || !ytReady) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const pct = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+    try {
+      const d = player.getDuration() || current?.dur || 0;
+      player.seekTo(d * pct, true);
+      liveClock = false;
+    } catch (err) { /* ignore */ }
+  };
   $$("#lang-row button").forEach((b) => {
     b.onclick = () => {
       langFilter = b.dataset.lang;
@@ -332,8 +426,7 @@ function bind() {
       renderSongs();
     };
   });
-  const wa = TRIP.whatsapp;
-  $("#wa-foot").href = wa;
+  $("#wa-foot").href = TRIP.whatsapp;
 }
 
 function bootYT() {
@@ -362,6 +455,8 @@ function bootYT() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderSeatmap();
+  syncPass();
   renderChannels();
   renderSeats();
   renderDays();

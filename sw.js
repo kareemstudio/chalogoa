@@ -1,4 +1,4 @@
-const CACHE = "air-chalo-cg2409-v1";
+const CACHE = "air-chalo-cg2409-v2";
 const ASSETS = [
   "./",
   "./index.html",
