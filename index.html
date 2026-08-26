@@ -2,373 +2,174 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<title>Chalo Goa — Kareem's Birthday Escape</title>
-<meta name="theme-color" content="#0B1F3A">
-<meta name="description" content="Private trip companion for Chalo Goa — Kareem's Birthday Escape, 24–27 Sep.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Air Chalo CG-2409 — Kareem's Birthday Escape</title>
+<meta name="theme-color" content="#140c08">
+<meta name="description" content="Board Air Chalo flight CG-2409. In-flight entertainment: Hindi, Punjabi and English travel mix for Kareem's Goa birthday escape, 24–27 Sep.">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ===================== SPLASH / HERO ===================== -->
-<section id="view-splash" class="view splash">
-  <div class="splash-sky">
+<!-- ========== GATE / BOARDING PASS ========== -->
+<section id="gate" class="gate">
+  <div class="gate-window">
+    <div class="sky"></div>
     <div class="sun"></div>
-    <div class="waves wave1"></div>
-    <div class="waves wave2"></div>
-    <div class="palm palm-l">🌴</div>
-    <div class="palm palm-r">🌴</div>
-    <div class="sticker sticker-1">✈️</div>
-    <div class="sticker sticker-2">🥥</div>
-    <div class="sticker sticker-3">🛵</div>
+    <div class="sea"></div>
+    <div class="palm-cut" aria-hidden="true">🌴</div>
   </div>
-  <div class="splash-content">
-    <p class="eyebrow" id="splash-group-name">Chalo goa✈️ ✈️ ✈️ ✈️</p>
-    <h1 class="hero-title">CHALO<span class="hero-title-goa">GOA</span></h1>
-    <p class="hero-tagline" id="splash-tagline">5 Friends. 4 Days. 1 Birthday. <em>Unlimited Bad Decisions.</em> 😎</p>
-    <div class="date-pill" id="splash-dates">24 SEP → 27 SEP</div>
 
-    <div class="countdown-block">
-      <p class="countdown-label">GOA MODE ACTIVATES IN</p>
-      <div class="countdown" id="countdown-splash">
-        <div class="cd-unit"><span id="cd-days">--</span><small>Days</small></div>
-        <div class="cd-unit"><span id="cd-hours">--</span><small>Hrs</small></div>
-        <div class="cd-unit"><span id="cd-mins">--</span><small>Mins</small></div>
-        <div class="cd-unit"><span id="cd-secs">--</span><small>Secs</small></div>
+  <p class="gate-kicker">NOW BOARDING · GATE B4 · PANJIM CHARTER</p>
+  <h1 class="gate-title">CHALO GOA <span>✈️</span></h1>
+  <p class="gate-tag">5 Friends. 4 Days. 1 Birthday.<br><em>Unlimited Bad Decisions.</em> 😎</p>
+  <p class="gate-dates">24 SEP → 27 SEP</p>
+
+  <article class="pass" aria-label="Boarding pass">
+    <div class="pass-main">
+      <div class="pass-row">
+        <div>
+          <span class="lbl">Passenger</span>
+          <strong>THE GANG</strong>
+        </div>
+        <div class="right">
+          <span class="lbl">Flight</span>
+          <strong>CG-2409</strong>
+        </div>
       </div>
+      <div class="pass-row">
+        <div>
+          <span class="lbl">From</span>
+          <strong>REAL LIFE</strong>
+        </div>
+        <div class="plane-mark">✈</div>
+        <div class="right">
+          <span class="lbl">To</span>
+          <strong>GOA / CHAOS</strong>
+        </div>
+      </div>
+      <div class="pass-row three">
+        <div><span class="lbl">Date</span><strong>24 SEP 26</strong></div>
+        <div><span class="lbl">Seat</span><strong>CREW</strong></div>
+        <div><span class="lbl">Class</span><strong>BAD IDEAS</strong></div>
+      </div>
+      <div class="barcode" aria-hidden="true"></div>
     </div>
+    <div class="pass-stub">
+      <p class="stub-air">AIR CHALO</p>
+      <p class="stub-fl">CG-2409</p>
+      <p class="stub-to">GOA</p>
+      <p class="stub-nm">KAREEM<br>BIRTHDAY<br>ESCAPE</p>
+    </div>
+  </article>
 
-    <button class="btn-primary btn-enter" id="btn-enter-trip">ENTER TRIP <span>→</span></button>
+  <div class="cd-strip">
+    <p class="cd-lbl" id="gate-cd-lbl">DEPARTS IN</p>
+    <div class="cd" id="gate-cd">
+      <span><b id="g-d">--</b>d</span>
+      <span><b id="g-h">--</b>h</span>
+      <span><b id="g-m">--</b>m</span>
+      <span><b id="g-s">--</b>s</span>
+    </div>
   </div>
+
+  <button class="board-btn" id="btn-board">BOARD FLIGHT CG-2409 <span>→</span></button>
+  <p class="gate-note">Cabin entertainment is a Hindi · Punjabi · English mix, locked to Goa time.</p>
 </section>
 
-<!-- ===================== PIN GATE ===================== -->
-<section id="view-pin" class="view hidden pin-gate">
-  <div class="pin-card">
-    <p class="eyebrow">Private trip</p>
-    <h2>This crew only 🔒</h2>
-    <p class="muted">Enter the group PIN to continue.</p>
-    <input type="tel" inputmode="numeric" maxlength="8" id="pin-input" class="pin-input" placeholder="••••" autocomplete="off">
-    <button class="btn-primary" id="btn-pin-submit">Unlock Goa</button>
-    <p class="pin-error hidden" id="pin-error">Wrong PIN, try again.</p>
-  </div>
-</section>
-
-<!-- ===================== APP SHELL ===================== -->
-<div id="shell" class="hidden">
-
-  <header class="topbar">
-    <button class="icon-btn" id="btn-menu" aria-label="Menu">☰</button>
-    <div class="topbar-title" id="topbar-title">GOA HQ 🌴</div>
-    <button class="icon-btn" id="btn-mode-badge" aria-label="Trip status">🔔</button>
+<!-- ========== CABIN / IFE ========== -->
+<div id="cabin" class="cabin hidden">
+  <header class="ife-bar">
+    <div class="seatbelt" id="seatbelt">FASTEN SEATBELTS</div>
+    <div class="ife-clock">
+      <span id="ist-clock">--:-- IST</span>
+      <span class="onair"><i></i> ON AIR</span>
+    </div>
+    <button class="ife-icon" id="btn-gate" type="button">⌫ GATE</button>
   </header>
 
-  <main id="content">
+  <p class="pa" id="pa">Cabin crew, prepare for takeoff. Aux is armed.</p>
 
-    <!-- ---------- HQ ---------- -->
-    <section id="view-hq" class="view">
-      <div class="mode-banner" id="mode-banner">
-        <div>
-          <p class="mode-label">CURRENT MODE</p>
-          <p class="mode-value" id="mode-value">GOA LOADING… 🌴</p>
-        </div>
-        <div class="mode-emoji">🏝️</div>
-      </div>
-
-      <div class="stat-row">
-        <div class="stat-card">
-          <p class="stat-label">GOA COUNTDOWN</p>
-          <p class="stat-value" id="hq-days-left">--</p>
-          <p class="stat-sub">days left</p>
-        </div>
-        <div class="stat-card accent-pink">
-          <p class="stat-label">KAREEM BIRTHDAY</p>
-          <p class="stat-value" id="hq-birthday-left">--</p>
-          <p class="stat-sub">days to go</p>
-        </div>
-        <div class="stat-card accent-turq">
-          <p class="stat-label">TRIP PROGRESS</p>
-          <p class="stat-value" id="hq-progress">0%</p>
-          <p class="stat-sub" id="hq-progress-sub">Let's go!</p>
+  <div class="bezel">
+    <p class="bezel-brand">AIR CHALO · SEATBACK ENTERTAINMENT</p>
+    <div class="screen">
+      <div class="poster-wrap">
+        <img id="cover" alt="Now playing" src="icon.svg">
+        <div class="poster-meta">
+          <span class="ch-pill" id="ch-pill">CH 01 · HIGHWAY</span>
+          <h2 id="song-title">Boarding complete</h2>
+          <p id="song-artist">Tap play to arm the cabin aux</p>
         </div>
       </div>
-
-      <div class="vibe-banner">
-        <p class="vibe-label">TODAY'S VIBE</p>
-        <p class="vibe-text" id="vibe-text">Plan locked. Spirits unlocked. 😎</p>
+      <div class="scrub"><div id="bar"></div></div>
+      <div class="times"><span id="t-cur">0:00</span><span id="t-dur">0:00</span></div>
+      <div class="ife-controls">
+        <button type="button" id="btn-prev" aria-label="Previous">⏮</button>
+        <button type="button" class="big" id="btn-play">▶ PLAY</button>
+        <button type="button" id="btn-next" aria-label="Next">⏭</button>
       </div>
-
-      <div class="two-col">
-        <div class="mini-card" id="hq-next-up">
-          <p class="mini-label">NEXT UP</p>
-          <p class="mini-title" id="hq-next-up-title">Nothing planned yet</p>
-          <p class="mini-sub" id="hq-next-up-time">Add it in Trip →</p>
-        </div>
-        <div class="mini-card accent-orange" id="hq-latest-challenge">
-          <p class="mini-label">LATEST CHALLENGE</p>
-          <p class="mini-title" id="hq-challenge-title">Spin the wheel to get one 🎡</p>
-          <button class="btn-chip" id="hq-challenge-btn">Play Games</button>
-        </div>
+      <div class="ife-links">
+        <a id="yt-link" target="_blank" rel="noopener">YouTube</a>
+        <a id="ytm-link" target="_blank" rel="noopener">YT Music</a>
+        <button type="button" id="btn-live">LIVE CLOCK</button>
       </div>
-
-      <div class="section-block">
-        <div class="section-head">
-          <h3>GOA POINTS LEADERBOARD</h3>
-          <button class="link-btn" data-nav="scores">View All →</button>
-        </div>
-        <div class="podium-preview" id="hq-leaderboard-preview"></div>
-      </div>
-
-      <div class="section-block">
-        <div class="section-head">
-          <h3>MEMORY PREVIEW</h3>
-          <button class="link-btn" data-nav="memories">See All →</button>
-        </div>
-        <div class="scroll-row" id="hq-memory-preview"></div>
-      </div>
-    </section>
-
-    <!-- ---------- TRIP TIMELINE ---------- -->
-    <section id="view-trip" class="view hidden">
-      <h2 class="page-title">TRIP TIMELINE 🗺️</h2>
-      <div class="day-tabs" id="day-tabs"></div>
-      <div class="day-progress" id="day-progress"></div>
-      <div class="day-cards" id="day-cards"></div>
-    </section>
-
-    <!-- ---------- GAMES HUB ---------- -->
-    <section id="view-games" class="view hidden">
-      <h2 class="page-title">GOA GAMES 🎮</h2>
-      <div class="games-stats">
-        <div><strong id="games-stat-play">Play</strong></div>
-        <div><strong id="games-stat-points">Earn Points</strong></div>
-        <div><strong id="games-stat-fun">Have Fun</strong></div>
-        <div><strong id="games-stat-legend">Be Legend</strong></div>
-      </div>
-      <div class="games-grid" id="games-grid">
-        <button class="game-tile tile-wheel" data-game="wheel">
-          <span class="tile-title">SPIN THE<br>GOA WHEEL</span>
-          <span class="tile-icon">🎡</span>
-          <span class="btn-chip">PLAY</span>
-        </button>
-        <button class="game-tile tile-quiz" data-game="quiz">
-          <span class="tile-title">WHO KNOWS<br>KAREEM BEST?</span>
-          <span class="tile-icon">❓</span>
-          <span class="btn-chip">PLAY</span>
-        </button>
-        <button class="game-tile tile-bingo" data-game="bingo">
-          <span class="tile-title">GOA<br>BINGO</span>
-          <span class="tile-icon">🎯</span>
-          <span class="btn-chip">PLAY</span>
-        </button>
-        <button class="game-tile tile-mostlikely" data-game="mostlikely">
-          <span class="tile-title">MOST<br>LIKELY TO</span>
-          <span class="tile-icon">🫣</span>
-          <span class="btn-chip">PLAY</span>
-        </button>
-        <button class="game-tile tile-tdc" data-game="tdc">
-          <span class="tile-title">TRUTH / DARE /<br>CHALLENGE</span>
-          <span class="tile-icon">🃏</span>
-          <span class="btn-chip">PLAY</span>
-        </button>
-        <button class="game-tile tile-secret" data-game="secret">
-          <span class="tile-title">SECRET<br>MISSIONS</span>
-          <span class="tile-icon">🕵️</span>
-          <span class="btn-chip">PLAY</span>
-        </button>
-      </div>
-      <button class="chest-banner" data-nav="scores">🎁 COMPLETE CHALLENGES · EARN GOA POINTS</button>
-
-      <!-- sub-game panels -->
-      <div id="game-panel" class="game-panel hidden"></div>
-    </section>
-
-    <!-- ---------- SCORES ---------- -->
-    <section id="view-scores" class="view hidden">
-      <h2 class="page-title">WHO RULES GOA? 🏆</h2>
-      <div class="podium" id="podium"></div>
-      <div class="leaderboard-list" id="leaderboard-list"></div>
-
-      <div class="section-block">
-        <div class="section-head"><h3>FINAL AWARDS 🏆</h3></div>
-        <div class="awards-grid" id="awards-grid"></div>
-      </div>
-
-      <button class="btn-secondary" id="btn-recap" data-nav="recap">Open Trip Recap 👀</button>
-    </section>
-
-    <!-- ---------- MEMORIES ---------- -->
-    <section id="view-memories" class="view hidden">
-      <h2 class="page-title">MEMORY WALL 📸</h2>
-      <div class="day-filter" id="memory-day-filter"></div>
-      <button class="btn-primary btn-upload" id="btn-add-memory">＋ Add a Memory</button>
-      <div class="polaroid-grid" id="memory-grid"></div>
-    </section>
-
-    <!-- ---------- THE GANG ---------- -->
-    <section id="view-gang" class="view hidden">
-      <h2 class="page-title">THE GANG 🕶️</h2>
-      <div class="gang-cards" id="gang-cards"></div>
-    </section>
-
-    <!-- ---------- BIRTHDAY MODE ---------- -->
-    <section id="view-birthday" class="view hidden">
-      <div class="birthday-hero">
-        <div class="confetti-layer" id="confetti-layer"></div>
-        <h2 id="birthday-title">KAREEM MODE ACTIVATED 🎂</h2>
-        <p id="birthday-subtitle">Today, normal Goa rules do not apply.</p>
-        <div class="countdown" id="countdown-birthday">
-          <div class="cd-unit"><span id="bd-days">--</span><small>Days</small></div>
-          <div class="cd-unit"><span id="bd-hours">--</span><small>Hrs</small></div>
-          <div class="cd-unit"><span id="bd-mins">--</span><small>Mins</small></div>
-          <div class="cd-unit"><span id="bd-secs">--</span><small>Secs</small></div>
-        </div>
-      </div>
-
-      <div class="section-block">
-        <div class="section-head"><h3>BIRTHDAY MESSAGES 💌</h3></div>
-        <div id="birthday-messages" class="birthday-messages"></div>
-        <div class="message-form">
-          <select id="msg-from"></select>
-          <input type="text" id="msg-text" placeholder="Write a birthday message…" maxlength="200">
-          <button class="btn-chip" id="btn-add-message">Send</button>
-        </div>
-      </div>
-
-      <div class="section-block">
-        <div class="section-head"><h3>LOCKED BIRTHDAY CARD 🔒</h3></div>
-        <div class="locked-card" id="locked-card">
-          <div class="locked-card-front" id="locked-card-front">
-            <p>🔒</p>
-            <p>Opens automatically on Kareem's birthday</p>
-          </div>
-          <div class="locked-card-back hidden" id="locked-card-back">
-            <p class="unlocked-emoji">🎉</p>
-            <p id="unlocked-text">Happy Birthday Kareem! The whole gang loves you. 🎂</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-block">
-        <div class="section-head"><h3>SECRET SURPRISE 🤫</h3></div>
-        <p class="muted" id="birthday-surprise"></p>
-      </div>
-    </section>
-
-    <!-- ---------- EXPENSES ---------- -->
-    <section id="view-expenses" class="view hidden">
-      <h2 class="page-title">TRIP EXPENSES 💸</h2>
-      <div class="stat-row">
-        <div class="stat-card"><p class="stat-label">TOTAL SPEND</p><p class="stat-value" id="exp-total">₹0</p></div>
-        <div class="stat-card accent-turq"><p class="stat-label">PER PERSON</p><p class="stat-value" id="exp-per-person">₹0</p></div>
-      </div>
-      <button class="btn-primary" id="btn-add-expense">＋ Add Expense</button>
-      <div class="section-block">
-        <div class="section-head"><h3>WHO OWES WHOM</h3></div>
-        <div id="exp-settlements" class="settlements-list"></div>
-      </div>
-      <div class="section-block">
-        <div class="section-head"><h3>ALL EXPENSES</h3></div>
-        <div id="exp-list" class="expense-list"></div>
-      </div>
-    </section>
-
-    <!-- ---------- RECAP ---------- -->
-    <section id="view-recap" class="view hidden">
-      <div class="recap-hero">
-        <h2>WHAT HAPPENED IN GOA… 👀</h2>
-      </div>
-      <div class="stat-row">
-        <div class="stat-card"><p class="stat-label">PHOTOS</p><p class="stat-value" id="recap-photos">0</p></div>
-        <div class="stat-card accent-pink"><p class="stat-label">CHALLENGES DONE</p><p class="stat-value" id="recap-challenges">0</p></div>
-        <div class="stat-card accent-turq"><p class="stat-label">POINTS WINNER</p><p class="stat-value" id="recap-winner">—</p></div>
-      </div>
-      <div class="section-block">
-        <div class="section-head"><h3>FRIEND AWARDS</h3></div>
-        <div class="awards-grid" id="recap-awards"></div>
-      </div>
-      <div class="section-block">
-        <div class="section-head"><h3>TOP MEMORIES</h3></div>
-        <div class="polaroid-grid" id="recap-memories"></div>
-      </div>
-      <p class="recap-closing">Until the next bad idea. ✈️</p>
-    </section>
-
-    <!-- ---------- ADMIN ---------- -->
-    <section id="view-admin" class="view hidden">
-      <div id="admin-lock">
-        <h2 class="page-title">ADMIN 🔧</h2>
-        <p class="muted">Enter the admin password to edit trip content.</p>
-        <input type="password" id="admin-pass-input" class="pin-input" placeholder="Password">
-        <button class="btn-primary" id="btn-admin-unlock">Unlock Admin</button>
-      </div>
-      <div id="admin-panel" class="hidden">
-        <h2 class="page-title">ADMIN 🔧</h2>
-        <div class="admin-tabs" id="admin-tabs">
-          <button class="admin-tab active" data-tab="friends">Friends</button>
-          <button class="admin-tab" data-tab="itinerary">Itinerary</button>
-          <button class="admin-tab" data-tab="birthday">Birthday</button>
-          <button class="admin-tab" data-tab="wheel">Wheel</button>
-          <button class="admin-tab" data-tab="quiz">Quiz</button>
-          <button class="admin-tab" data-tab="bingo">Bingo</button>
-          <button class="admin-tab" data-tab="tdc">Truth/Dare</button>
-          <button class="admin-tab" data-tab="missions">Missions</button>
-          <button class="admin-tab" data-tab="awards">Awards</button>
-          <button class="admin-tab" data-tab="settings">Settings</button>
-        </div>
-        <div id="admin-content"></div>
-        <div class="admin-io">
-          <button class="btn-secondary" id="btn-export">Export data (.json)</button>
-          <label class="btn-secondary" for="import-file">Import data (.json)</label>
-          <input type="file" id="import-file" accept="application/json" hidden>
-          <button class="btn-danger" id="btn-reset">Reset all data</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <nav class="bottomnav">
-    <button class="nav-btn active" data-nav="hq"><span>🏠</span>HQ</button>
-    <button class="nav-btn" data-nav="trip"><span>🗺️</span>Trip</button>
-    <button class="nav-btn" data-nav="games"><span>🎮</span>Games</button>
-    <button class="nav-btn" data-nav="scores"><span>🏆</span>Scores</button>
-    <button class="nav-btn" data-nav="memories"><span>📸</span>Memories</button>
-  </nav>
-
-  <div id="sidemenu" class="sidemenu hidden">
-    <div class="sidemenu-inner">
-      <button class="icon-btn close-menu" id="btn-close-menu">✕</button>
-      <button class="menu-item" data-nav="gang">🕶️ The Gang</button>
-      <button class="menu-item" data-nav="birthday">🎂 Kareem Birthday Mode</button>
-      <button class="menu-item" data-nav="expenses">💸 Expenses</button>
-      <button class="menu-item" data-nav="recap">👀 Trip Recap</button>
-      <button class="menu-item" data-nav="admin">🔧 Admin</button>
-      <a class="menu-item" id="menu-whatsapp" target="_blank" rel="noopener">💬 Open Chalo Goa Chat</a>
     </div>
   </div>
 
-  <a href="#" id="whatsapp-fab" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Open WhatsApp group">
-    <svg viewBox="0 0 32 32" width="26" height="26" fill="#fff"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.55.8 4.92 2.16 6.87L4.6 28l6.28-1.65a11.94 11.94 0 0 0 5.14 1.17h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3Zm0 21.9h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.88 9.88 0 0 1-1.5-5.27c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.13 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.45 9.89-9.9 9.89Zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.37-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
-  </a>
+  <nav class="channels" id="channels" aria-label="Cabin channels"></nav>
 
+  <section class="pad">
+    <h3 class="sec-h">Captain’s briefing</h3>
+    <p class="brief">This is not a travel website. It is the seatback screen for a charter that should not exist: five friends, four days, one birthday. The mix running in this cabin is the one you actually hear on the airport road, in a shack at 3pm, and outside Tito’s after midnight — Hindi, Punjabi, English, no algorithm, on Goa time.</p>
+    <p class="brief">Four channels sit on the clock. Channel 05, Kareem’s Cake Mix, is outside the clock. It plays when you ask, or when 25 September arrives on its own.</p>
+  </section>
+
+  <section class="pad" id="safety">
+    <h3 class="sec-h">Safety card · the four days</h3>
+    <p class="brief dim">In the event of a good time, remain seated until the cake is served.</p>
+    <div class="day-switch" id="day-switch"></div>
+    <article class="safety-card" id="safety-card"></article>
+  </section>
+
+  <section class="pad" id="manifest">
+    <h3 class="sec-h">Passenger manifest</h3>
+    <div class="seats" id="seats"></div>
+  </section>
+
+  <section class="pad" id="playlist">
+    <h3 class="sec-h">Full inflight catalogue</h3>
+    <div class="lang-row" id="lang-row">
+      <button data-lang="all" class="on">All</button>
+      <button data-lang="Hindi">Hindi</button>
+      <button data-lang="Punjabi">Punjabi</button>
+      <button data-lang="English">English</button>
+    </div>
+    <div id="song-list" class="song-list"></div>
+  </section>
+
+  <section class="pad" id="cake">
+    <article class="locked" id="locked">
+      <p class="sec-h">Overhead bin · birthday card</p>
+      <h3 id="cake-title">Sealed until 25 SEP</h3>
+      <p id="cake-body">Do not open before Kareem’s day. The crew will know.</p>
+    </article>
+  </section>
+
+  <footer class="cab-foot">
+    <a id="wa-foot" target="_blank" rel="noopener">Open group chat</a>
+    <p>Air Chalo CG-2409 · until the next bad idea.</p>
+  </footer>
 </div>
 
-<!-- global celebratory confetti layer (always available regardless of active view) -->
-<div id="global-confetti" style="position:fixed;inset:0;pointer-events:none;z-index:250;overflow:hidden;"></div>
+<div class="yt-host"><div id="yt-player"></div></div>
+<div id="toast" class="toast hidden"></div>
 
-<!-- confirm / dialog modal -->
-<div id="modal-root" class="modal-root hidden"></div>
-
-<!-- scooter loader -->
-<div id="scooter-loader" class="scooter-loader hidden"><span>🛵</span></div>
-
+<script src="songs.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>
