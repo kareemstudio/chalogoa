@@ -6,7 +6,7 @@ window.GOA_RADIO = {
     {
       id: "highway",
       hi: "हाईवे टू गोवा",
-      name: "Highway to Goa",
+      name: "Highway Heat",
       hours: "05:00–11:00 IST",
       start: 5,
       end: 11,
@@ -16,7 +16,7 @@ window.GOA_RADIO = {
     {
       id: "shack",
       hi: "बीच शैक",
-      name: "Beach Shack FM",
+      name: "Beach Shack",
       hours: "11:00–17:00 IST",
       start: 11,
       end: 17,
@@ -26,7 +26,7 @@ window.GOA_RADIO = {
     {
       id: "sunset",
       hi: "सनसेट स्लो",
-      name: "Sunset Slow",
+      name: "Golden Hour",
       hours: "17:00–21:00 IST",
       start: 17,
       end: 21,
@@ -36,7 +36,7 @@ window.GOA_RADIO = {
     {
       id: "tito",
       hi: "टीटो’स नाइट",
-      name: "Tito's Night",
+      name: "After Dark",
       hours: "21:00–05:00 IST",
       start: 21,
       end: 5,
@@ -46,7 +46,7 @@ window.GOA_RADIO = {
     {
       id: "birthday",
       hi: "करीम्स केक",
-      name: "Kareem's Cake Mix",
+      name: "Birthday FM",
       hours: "on request · auto on 25 Sep",
       start: null,
       end: null,
