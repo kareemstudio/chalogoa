@@ -3,89 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#08131f">
-  <meta name="description" content="Chalo Goa Radio — a private road trip soundtrack for five friends, four days and unlimited bad decisions.">
-  <title>Chalo Goa Radio — On Repeat</title>
+  <meta name="theme-color" content="#f6eedc">
+  <meta name="description" content="Chalo Goa Radio — the official soundtrack for the road trip.">
+  <title>Chalo Goa Radio</title>
   <link rel="icon" href="icon.svg">
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div id="app">
   <header class="topbar">
-    <a class="brand" href="#" data-go="home" aria-label="Chalo Goa home">
-      <span class="brand-mark">CG</span>
-      <span><b>CHALO</b><small>GOA RADIO</small></span>
-    </a>
-    <div class="topbar-center"><span class="live-dot"></span><span>PRIVATE ROAD TRIP / <b>LIVE IN 19 DAYS</b></span></div>
-    <div class="topbar-right"><span class="date-pill">24—27 SEP 2026</span><button class="ghost-icon" id="moreBtn" aria-label="Open more trip details">•••</button></div>
+    <a class="brand" href="#" data-go="home"><span class="brand-mark">CG</span><span><b>CHALO GOA</b><small>PRIVATE RADIO / 2026</small></span></a>
+    <div class="top-status"><span></span> ON AIR / 19 DAYS</div>
+    <button class="top-more" id="moreBtn" aria-label="Open trip menu">•••</button>
   </header>
 
   <main>
     <section class="screen active" id="home">
-      <div class="home-grid">
-        <article class="hero-card">
-          <img src="assets/goa-hero.jpg" alt="A coastal Goa road trip at sunset">
-          <div class="hero-shade"></div>
-          <div class="hero-copy">
-            <div class="eyebrow light"><span class="eyebrow-line"></span> THE OFFICIAL SOUNDTRACK</div>
-            <h1>GOA<br><em>ON REPEAT.</em></h1>
-            <p>Five friends. Four days. One birthday.<br>Every mile deserves a better chorus.</p>
-            <div class="hero-actions"><button class="btn accent" data-go="radio"><span class="play-glyph">▶</span> START THE ROAD TRIP</button><button class="text-link" data-collection="all">EXPLORE THE CATALOGUE <span>↗</span></button></div>
-          </div>
-          <div class="hero-stamp"><span>SEPT</span><b>24</b><span>— 27</span></div>
-        </article>
-        <aside class="home-rail">
-          <div class="rail-kicker">TRIP SIGNAL <span>● NOW</span></div>
-          <div class="signal-card"><div class="signal-top"><span id="home-now-label">UP NEXT</span><span id="home-now-lang">HINDI</span></div><div class="signal-art"><img src="assets/goa-cover.jpg" alt="Chalo Goa radio cover art"><div class="signal-play"><button id="homePlay" aria-label="Play current song">▶</button></div></div><h2 id="home-now-title">Road Trip Track</h2><p id="home-now-artist">Curating the first song…</p><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="signal-cta" data-go="radio">OPEN FULL PLAYER <span>→</span></button></div>
-          <div class="rail-stats"><div><b id="song-count">75</b><span>SONGS IN ROTATION</span></div><div><b id="collection-count">07</b><span>MOODS TO PICK FROM</span></div></div>
-        </aside>
+      <div class="listen-head"><div class="eyebrow">THE OFFICIAL SOUNDTRACK</div><h1>GOA<br><em>RADIO.</em></h1><p>Windows down. Volume up.<br>No skips after sunset.</p></div>
+      <div class="cassette-shell" id="stereo">
+        <div class="cassette-label"><span>CHALO GOA</span><b>NOW PLAYING</b><span id="home-now-lang">HINDI</span></div>
+        <div class="cassette-window"><img src="assets/goa-cover.jpg" alt="Goa radio cover art"><div class="cassette-title"><strong id="np-title">Ilahi</strong><span id="np-artist">Arijit Singh</span></div><div class="reel reel-left"></div><div class="reel reel-right"></div><div class="tape-slot"></div></div>
+        <div class="cassette-foot"><span id="player-rotation">HIGHWAY HEAT</span><span id="player-rotation-sub">WINDOWS DOWN / VOLUME UP</span></div>
       </div>
-      <div class="section-head"><div><div class="eyebrow">PICK YOUR MILE</div><h2>Curated for the crew</h2></div><button class="outline-link" data-go="radio">VIEW ALL <span>→</span></button></div>
-      <div class="collection-grid" id="home-collections"></div>
-      <div class="home-bottom-grid"><div class="quote-card"><span class="quote-mark">“</span><p>Windows down. Scooter tank on empty. <em>Ilahi on repeat.</em></p><span class="quote-by">— THE HIGHWAY BRIEF</span></div><div class="trip-card"><div class="trip-card-meta"><span>THE TRIP IN NUMBERS</span><span>01 / 04</span></div><div class="trip-numbers"><div><b>05</b><span>FRIENDS</span></div><div><b>04</b><span>DAYS</span></div><div><b>01</b><span>BIRTHDAY</span></div><div><b>∞</b><span>STORIES</span></div></div></div></div>
+      <div class="listen-meta"><span>01 / <b id="song-count">79</b></span><b id="player-collection-name">HIGHWAY HEAT</b><span>ON TAPE</span></div>
+      <div class="progress-wrap"><div class="progress"><b id="np-fill"></b></div><div class="times"><span id="np-cur">0:00</span><span id="np-dur">3:51</span></div></div>
+      <div class="player-controls"><button class="round-control" id="prev" aria-label="Previous song">◀◀</button><button class="round-control play" id="play" aria-label="Play or pause">▶</button><button class="round-control" id="next" aria-label="Next song">▶▶</button></div>
+      <div class="player-utils"><button class="util" id="shuffle">↝ <span>SHUFFLE</span></button><button class="util" id="repeat">↻ <span>REPEAT</span></button><button class="heart" id="fav" aria-label="Favourite current song">♡</button><label class="volume">VOL <input id="vol" type="range" min="0" max="100" value="80"></label></div>
+      <div class="next-tape"><div class="next-label"><span>NEXT ON TAPE</span><b>→</b></div><div class="next-track"><img src="assets/goa-hero.jpg" alt="Coastal road"><div><b id="home-now-title">Ilahi</b><small id="home-now-artist">Arijit Singh</small></div><span>02 / 79</span></div></div>
+      <button class="mix-entry" data-go="radio"><span>✦</span><div><b>CHOOSE A MIX</b><small>Highway Heat · Beach Shack · After Dark</small></div><strong>→</strong></button>
     </section>
 
     <section class="screen" id="radio">
-      <div class="page-intro"><div><div class="eyebrow">THE SOUNDTRACK</div><h1>Chalo Goa<br><em>Radio.</em></h1><p>Pick a mood, press play, and let the coastline do the rest.</p></div><div class="intro-note"><span>IST / 09:41</span><b>YOUR AUX.<br>YOUR RULES.</b></div></div>
-      <div class="radio-layout">
-        <div class="player-column">
-          <div class="player-card" id="stereo">
-            <div class="player-card-head"><span class="status-dot"></span><span>CHALO GOA RADIO</span><span class="player-mode">ROAD TRIP MODE</span></div>
-            <div class="player-art"><img src="assets/goa-cover.jpg" alt="Abstract Chalo Goa radio cover"><div class="art-overlay"><span id="player-rotation">HIGHWAY TO GOA</span><b id="player-rotation-sub">WINDOWS DOWN / VOLUME UP</b></div><div class="player-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div class="now-playing"><div><span class="now-label">NOW PLAYING</span><h2 id="np-title">Road Trip Track</h2><p id="np-artist">Choose a song to start the radio</p></div><button id="fav" class="heart" aria-label="Favourite current song">♡</button></div>
-            <div class="progress-wrap"><div class="progress"><b id="np-fill"></b></div><div class="times"><span id="np-cur">0:00</span><span id="np-dur">0:00</span></div></div>
-            <div class="player-controls"><button class="round-control" id="prev" aria-label="Previous song">↶</button><button class="round-control play" id="play" aria-label="Play or pause">▶</button><button class="round-control" id="next" aria-label="Next song">↷</button></div>
-            <div class="player-utils"><button class="util" id="shuffle">⌘ <span>SHUFFLE</span></button><button class="util" id="repeat">↻ <span>REPEAT</span></button><label class="volume">VOL <input id="vol" type="range" min="0" max="100" value="80"></label></div>
-          </div>
-          <div class="player-foot"><span>PLAYING FROM <b id="player-collection-name">ALL SONGS</b></span><button id="shuffleRoad">SURPRISE ME <span>✦</span></button></div>
-        </div>
-        <div class="catalogue-column">
-          <div class="catalogue-head"><div><span class="eyebrow">THE CATALOGUE</span><h2>Choose your energy</h2></div><label class="search-box"><span>⌕</span><input id="song-search" type="search" placeholder="Search songs or artists" aria-label="Search songs or artists"></label></div>
-          <div class="language-tabs" id="tabs"><button class="tab active" data-lang="all">ALL <span>75</span></button><button class="tab" data-lang="hindi">HINDI</button><button class="tab" data-lang="punjabi">PUNJABI</button><button class="tab" data-lang="english">ENGLISH</button></div>
-          <div class="collection-strip" id="radio-collections"></div>
-          <div class="tracks" id="playlist"></div>
-        </div>
-      </div>
+      <div class="page-top"><div class="eyebrow">THE MIXTAPE LIBRARY</div><h1>Pick your<br><em>mile.</em></h1><p>Every stretch of road has a sound.</p></div>
+      <div class="mix-search"><span>⌕</span><input id="song-search" type="search" placeholder="Search mixes or songs…" aria-label="Search mixes or songs"></div>
+      <div class="collection-strip" id="radio-collections"></div>
+      <div class="language-tabs" id="tabs"><button class="tab active" data-lang="all">ALL <span>79</span></button><button class="tab" data-lang="hindi">HINDI</button><button class="tab" data-lang="punjabi">PUNJABI</button><button class="tab" data-lang="english">ENGLISH</button></div>
+      <div class="mix-section-head"><div><span class="eyebrow">TRACKLIST</span><h2>On repeat</h2></div><button id="shuffleRoad" class="shuffle-cta">SURPRISE ME ✦</button></div>
+      <div class="tracks" id="playlist"></div>
     </section>
 
     <section class="screen" id="crew">
-      <div class="page-intro crew-intro"><div><div class="eyebrow">THE CAST</div><h1>Meet the<br><em>Goa crew.</em></h1><p>Every great trip needs a navigator, a photographer, and at least one person with no plan.</p></div><div class="crew-ticket"><span>CHALO GOA / 2026</span><b>FIVE SEATS.<br>ZERO REFUNDS.</b></div></div>
-      <div class="crew-layout"><div class="crew-stack" id="crew-list"></div><aside class="crew-note"><div class="eyebrow">THE CREW CODE</div><h2>Leave room<br>for one more<br><em>story.</em></h2><div class="crew-rule"><span>01</span><p>Never say “one last shack” unless you mean three.</p></div><div class="crew-rule"><span>02</span><p>The aux is a democracy. Until it isn't.</p></div><div class="crew-rule"><span>03</span><p>What happens in Goa gets pinned in the group.</p></div></aside></div>
+      <div class="page-top"><div class="eyebrow">THE CREW</div><h1>Five seats.<br><em>Zero refunds.</em></h1><p>Every road trip needs a navigator, an aux lord, and someone who says “one more shack.”</p></div>
+      <div class="crew-stack" id="crew-list"></div>
+      <div class="crew-code"><span class="eyebrow">THE CREW CODE</span><h2>Leave room for<br><em>one more story.</em></h2><p>01 / Never say one last shack unless you mean three.</p><p>02 / The aux is a democracy. Until it isn't.</p><p>03 / What happens in Goa gets pinned in the group.</p></div>
     </section>
 
     <section class="screen" id="birthday">
-      <div class="birthday-hero"><div class="eyebrow light">25 SEP / KAREEM DAY</div><h1>Birthday<br><em>mode.</em></h1><p>One day. One cake. A suspicious number of songs dedicated to Kareem.</p><div class="countdown" id="countdown"><div><b>19</b><span>DAYS</span></div><i>:</i><div><b>08</b><span>HRS</span></div><i>:</i><div><b>42</b><span>MIN</span></div></div><button class="btn cream" id="partyBtn">ACTIVATE BIRTHDAY MODE <span>✦</span></button><div class="birthday-sun"></div></div>
-      <div class="birthday-grid"><div class="birthday-plan"><div class="section-head compact"><div><div class="eyebrow">THE PLAN</div><h2>Big day energy</h2></div><span class="mono-label">KAREEM / 01</span></div><div class="plan-steps"><div><span>AM</span><b>Breakfast & confetti</b><p>Start soft. Hide the cake. Pretend this is organised.</p></div><div><span>PM</span><b>Water, sun, repeat</b><p>Matching energy, if not matching outfits.</p></div><div><span>PM+</span><b>Tito's after dark</b><p>Kareem picks the first three. Then mutiny.</p></div></div></div><div class="birthday-message"><span class="quote-mark">“</span><h2>To the birthday boy who turns every shack into an event.</h2><p>May the next year be loud in all the right ways.</p><b>— THE GOA CREW</b></div></div><div class="confetti" aria-hidden="true"><i style="left:8%;animation-delay:.45s">✦</i><i style="left:19%;animation-delay:.6s">+</i><i style="left:30%;animation-delay:0s">✦</i><i style="left:41%;animation-delay:.15s">+</i><i style="left:52%;animation-delay:.3s">✦</i><i style="left:63%;animation-delay:.45s">+</i><i style="left:74%;animation-delay:.6s">✦</i><i style="left:85%;animation-delay:0s">+</i></div>
+      <div class="trip-hero"><div class="eyebrow">25 SEP / KAREEM DAY</div><h1>Birthday<br><em>FM.</em></h1><p>One day. One cake. A suspicious number of songs dedicated to Kareem.</p><div class="birthday-sun"></div><div class="countdown"><b>19</b><span>DAYS</span><i>:</i><b>08</b><span>HRS</span><i>:</i><b>42</b><span>MIN</span></div><button class="btn dark" id="partyBtn">ACTIVATE BIRTHDAY MODE ✦</button></div>
+      <div class="trip-card"><span class="eyebrow">THE PLAN</span><h2>Big day energy</h2><div class="plan-row"><b>AM</b><span>Breakfast & confetti</span></div><div class="plan-row"><b>PM</b><span>Water, sun, repeat</span></div><div class="plan-row"><b>PM+</b><span>Tito's after dark</span></div></div>
+      <div class="birthday-message"><span class="quote-mark">“</span><h2>To the birthday boy who turns every shack into an event.</h2><p>May the next year be loud in all the right ways.</p><b>— THE GOA CREW</b></div><div class="confetti" aria-hidden="true"><i>✦</i><i>+</i><i>✦</i><i>+</i><i>✦</i></div>
     </section>
   </main>
 
-  <nav class="nav" aria-label="Primary navigation"><button class="active" data-go="home"><span>01</span>HOME</button><button data-go="radio"><span>02</span>RADIO</button><button data-go="crew"><span>03</span>CREW</button><button data-go="birthday"><span>04</span>BIRTHDAY</button><button id="moreBtnBottom"><span>•••</span>MORE</button></nav>
+  <nav class="nav" aria-label="Primary navigation"><button class="active" data-go="home"><span>▣</span>LISTEN</button><button data-go="radio"><span>≋</span>MIXES</button><button data-go="crew"><span>♣</span>CREW</button><button data-go="birthday"><span>☼</span>TRIP</button><button id="moreBtnBottom"><span>•••</span>MORE</button></nav>
 
-  <aside class="sheet" id="more" aria-hidden="true"><button class="iconbtn sheet-close" id="closeMore" aria-label="Close more details">×</button><div id="moreMenu"><div class="eyebrow">THE SIDE QUESTS</div><h2>More of<br><em>the trip.</em></h2><p class="sheet-lede">The details that make a four-day trip feel like a full season.</p><div class="more-grid"><button class="more-card" data-detail="journey"><span>01</span><b>THE ROAD TO GOA</b><small>Follow the detours</small></button><button class="more-card" data-detail="vibes"><span>02</span><b>GOA VIBES</b><small>Read the room</small></button><button class="more-card" data-detail="memories"><span>03</span><b>GOA MEMORIES</b><small>Archive pending</small></button><button class="more-card" data-detail="pass"><span>04</span><b>CHALO GOA PASS</b><small>Collectible edition</small></button><button class="more-card" data-detail="group"><span>05</span><b>GOA GROUP</b><small>Where the plans happen</small></button></div></div><div class="detail" id="detail-journey"><button class="back-link" data-back-more>← BACK TO SIDE QUESTS</button><div class="eyebrow">TRIP JOURNEY</div><h2>THE ROAD<br><em>TO GOA.</em></h2><p class="sheet-lede">Petrol full. Playlist ready. Goa loading.</p><div class="journey"><div class="stop"><span>01</span><b>HOME</b><small>Pack the charger</small></div><div class="stop"><span>02</span><b>HIGHWAY</b><small>Ilahi, non-negotiable</small></div><div class="stop"><span>03</span><b>COFFEE</b><small>Somewhere with a view</small></div><div class="stop"><span>04</span><b>BEACH</b><small>Leave the shoes behind</small></div><div class="stop"><span>05</span><b>BIRTHDAY</b><small>The main event</small></div></div></div><div class="detail" id="detail-vibes"><button class="back-link" data-back-more>← BACK TO SIDE QUESTS</button><div class="eyebrow">EDITORIAL COLLAGE</div><h2>GOA<br><em>VIBES.</em></h2><div class="vibes-grid"><div class="vibe">NO MEETINGS.<br>ONLY BEACHES.</div><div class="vibe">SLEEP LATER.<br>GOA FIRST.</div><div class="vibe wide">PLAYLIST &gt; PROBLEMS</div></div></div><div class="detail" id="detail-memories"><button class="back-link" data-back-more>← BACK TO SIDE QUESTS</button><div class="eyebrow">POLAROID ARCHIVE</div><h2>GOA<br><em>MEMORIES.</em></h2><p class="sheet-lede">Photos loading after the madness begins…</p><div class="memory-grid"><div class="pol"><div class="ph">01</div><b>TOUCHDOWN</b></div><div class="pol"><div class="ph">02</div><b>KAREEM DAY</b></div><div class="pol"><div class="ph">03</div><b>NO PLANS</b></div><div class="pol"><div class="ph">04</div><b>LAST SPLASH</b></div></div></div><div class="detail" id="detail-pass"><button class="back-link" data-back-more>← BACK TO SIDE QUESTS</button><div class="eyebrow">COLLECTIBLE</div><h2>CHALO GOA<br><em>PASS.</em></h2><div class="pass"><small>PRIVATE ROAD TRIP PASS / 2026</small><h3>CHALO GOA</h3><div class="pass-grid"><div><small>DATE</small><b>24—27 SEP</b></div><div><small>TRAVELLERS</small><b>05 FRIENDS</b></div><div><small>OCCASION</small><b>KAREEM DAY</b></div><div><small>DESTINATION</small><b>GOA / INDIA</b></div></div><small>STATUS</small><b>ROAD TRIP READY</b><div class="barcode"></div></div></div><div class="detail" id="detail-group"><button class="back-link" data-back-more>← BACK TO SIDE QUESTS</button><div class="eyebrow">OFFICIAL GROUP</div><h2>GOA<br><em>GROUP.</em></h2><p class="sheet-lede">All plans, chaos and last-minute decisions happen here.</p><div class="group-hero"><div class="chat">↗</div><h3>CHALO GOA</h3><p>24 SEP—27 SEP<br>KAREEM BIRTHDAY</p><a class="btn accent" href="https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW" target="_blank" rel="noopener">JOIN THE GOA GROUP <span>↗</span></a></div></div></aside>
+  <aside class="sheet" id="more" aria-hidden="true"><button class="iconbtn sheet-close" id="closeMore" aria-label="Close trip menu">×</button><div id="moreMenu"><div class="eyebrow">THE SIDE QUESTS</div><h2>More of<br><em>the trip.</em></h2><p class="sheet-lede">The details that make a four-day trip feel like a full season.</p><div class="more-grid"><button class="more-card" data-detail="journey"><span>01</span><b>THE ROAD TO GOA</b><small>Follow the detours</small></button><button class="more-card" data-detail="vibes"><span>02</span><b>GOA VIBES</b><small>Read the room</small></button><button class="more-card" data-detail="memories"><span>03</span><b>GOA MEMORIES</b><small>Archive pending</small></button><button class="more-card" data-detail="pass"><span>04</span><b>CHALO GOA PASS</b><small>Collectible edition</small></button><button class="more-card" data-detail="group"><span>05</span><b>GOA GROUP</b><small>Where the plans happen</small></button></div></div><div class="detail" id="detail-journey"><button class="back-link" data-back-more>← BACK</button><div class="eyebrow">TRIP JOURNEY</div><h2>THE ROAD<br><em>TO GOA.</em></h2><p class="sheet-lede">Petrol full. Playlist ready. Goa loading.</p><div class="journey"><div class="stop"><span>01</span><b>HOME</b></div><div class="stop"><span>02</span><b>HIGHWAY</b></div><div class="stop"><span>03</span><b>COFFEE</b></div><div class="stop"><span>04</span><b>BEACH</b></div><div class="stop"><span>05</span><b>BIRTHDAY</b></div></div></div><div class="detail" id="detail-vibes"><button class="back-link" data-back-more>← BACK</button><div class="eyebrow">EDITORIAL COLLAGE</div><h2>GOA<br><em>VIBES.</em></h2><div class="vibes-grid"><div class="vibe">NO MEETINGS.<br>ONLY BEACHES.</div><div class="vibe">SLEEP LATER.<br>GOA FIRST.</div><div class="vibe wide">PLAYLIST &gt; PROBLEMS</div></div></div><div class="detail" id="detail-memories"><button class="back-link" data-back-more>← BACK</button><div class="eyebrow">POLAROID ARCHIVE</div><h2>GOA<br><em>MEMORIES.</em></h2><p class="sheet-lede">Photos loading after the madness begins…</p><div class="memory-grid"><div class="pol"><div class="ph">01</div><b>TOUCHDOWN</b></div><div class="pol"><div class="ph">02</div><b>KAREEM DAY</b></div><div class="pol"><div class="ph">03</div><b>NO PLANS</b></div><div class="pol"><div class="ph">04</div><b>LAST SPLASH</b></div></div></div><div class="detail" id="detail-pass"><button class="back-link" data-back-more>← BACK</button><div class="eyebrow">COLLECTIBLE</div><h2>CHALO GOA<br><em>PASS.</em></h2><div class="pass"><small>PRIVATE ROAD TRIP PASS / 2026</small><h3>CHALO GOA</h3><div class="pass-grid"><div><small>DATE</small><b>24—27 SEP</b></div><div><small>TRAVELLERS</small><b>05 FRIENDS</b></div><div><small>OCCASION</small><b>KAREEM DAY</b></div><div><small>DESTINATION</small><b>GOA / INDIA</b></div></div><small>STATUS</small><b>ROAD TRIP READY</b><div class="barcode"></div></div></div><div class="detail" id="detail-group"><button class="back-link" data-back-more>← BACK</button><div class="eyebrow">OFFICIAL GROUP</div><h2>GOA<br><em>GROUP.</em></h2><p class="sheet-lede">All plans, chaos and last-minute decisions happen here.</p><div class="group-hero"><div class="chat">↗</div><h3>CHALO GOA</h3><p>24 SEP—27 SEP<br>KAREEM BIRTHDAY</p><a class="btn accent" href="https://chat.whatsapp.com/Eqhqy3MxclnJtjKXbwQicW" target="_blank" rel="noopener">JOIN THE GOA GROUP ↗</a></div></div></aside>
 
   <div id="err" class="err"></div><div id="toast" class="toast hidden"></div><div style="position:absolute;left:-9999px;top:0;width:1px;height:1px"><div id="yt-player"></div></div>
 </div>
