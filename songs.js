@@ -53,6 +53,36 @@ window.GOA_RADIO = {
       vibe: "The birthday boy's aux. No skip shame. Extra confetti.",
       emoji: "🎂",
       onRequest: true
+    },
+    {
+      id: "sunrise",
+      hi: "सनराइज़ सेशन",
+      name: "Sunrise Session",
+      hours: "05:00–08:00 IST",
+      start: 5,
+      end: 8,
+      vibe: "The beach is empty, the sky is pink, and nobody is ready to go home.",
+      emoji: "🌤️"
+    },
+    {
+      id: "cafe",
+      hi: "कैफे कट",
+      name: "Café Cut",
+      hours: "08:00–11:00 IST",
+      start: 8,
+      end: 11,
+      vibe: "Iced coffee, slow scrolling, and the first plan of the day.",
+      emoji: "☕"
+    },
+    {
+      id: "afterglow",
+      hi: "आफ्टरग्लो",
+      name: "Afterglow FM",
+      hours: "21:00–01:00 IST",
+      start: 21,
+      end: 1,
+      vibe: "Neon outside, salt in your hair, one more song before the taxi.",
+      emoji: "🌙"
     }
   ],
   songs: [
@@ -132,5 +162,20 @@ window.GOA_RADIO = {
     { id: "sCbbMZ-q4-I", title: "Lut Gaye", artist: "Jubin Nautiyal", film: "", year: 2021, lang: "Hindi", rotation: "birthday", dur: 238, note: "The late-night Hindi that still belongs on a birthday." },
     { id: "ic8j13piAhQ", title: "Cruel Summer", artist: "Taylor Swift", film: "", year: 2019, lang: "English", rotation: "birthday", dur: 178, note: "September is a technicality. This is still summer." },
     { id: "Pkh8UtuejGw", title: "Señorita", artist: "Shawn Mendes, Camila Cabello", film: "", year: 2019, lang: "English", rotation: "birthday", dur: 191, note: "Not the ZNMD one. Still a Goa song. Still a vibe." }
+    ,
+
+    /* —— New collection cuts —— */
+    { id: "hLQl3WQQoQ0", title: "Someone Like You", artist: "Adele", film: "", year: 2011, lang: "English", rotation: "sunrise", dur: 285, note: "For the walk back from the water when the whole beach is still asleep." },
+    { id: "450p7goxZqg", title: "All of Me", artist: "John Legend", film: "", year: 2013, lang: "English", rotation: "sunrise", dur: 270, note: "Soft-focus morning, shared headphones, no group chat notifications." },
+    { id: "J_ub7Etch2U", title: "Let Her Go", artist: "Passenger", film: "", year: 2012, lang: "English", rotation: "sunrise", dur: 252, note: "A little dramatic. Exactly right for a pink-sky departure." },
+    { id: "YQHsXMglC9A", title: "Hello", artist: "Adele", film: "", year: 2015, lang: "English", rotation: "cafe", dur: 295, note: "The café table is quiet until someone says the trip needs a spreadsheet." },
+    { id: "CevxZvSJLk8", title: "Roar", artist: "Katy Perry", film: "", year: 2013, lang: "English", rotation: "cafe", dur: 224, note: "Breakfast optimism. Even if the checkout time is already a problem." },
+    { id: "09R8_2nJtjg", title: "Sugar", artist: "Maroon 5", film: "", year: 2015, lang: "English", rotation: "cafe", dur: 235, note: "A sugary reset before the beach committee starts debating lunch." },
+    { id: "RgKAFK5djSk", title: "See You Again", artist: "Wiz Khalifa ft. Charlie Puth", film: "Furious 7", year: 2015, lang: "English", rotation: "afterglow", dur: 230, note: "The closing credits before the night decides it has another act." },
+    { id: "fLexgOxsZu0", title: "The Lazy Song", artist: "Bruno Mars", film: "", year: 2011, lang: "English", rotation: "afterglow", dur: 199, note: "For the 1am moment where sitting down feels like an itinerary." },
+    { id: "60ItHLz5WEA", title: "Faded", artist: "Alan Walker", film: "", year: 2015, lang: "English", rotation: "afterglow", dur: 212, note: "Blue-hour bass for the ride back along the coast." },
+    { id: "8of5w7RgcTc", title: "Apna Bana Le", artist: "Arijit Singh", film: "Bhediya", year: 2022, lang: "Hindi", rotation: "sunrise", dur: 252, note: "The morning after the birthday night. Still warm, still singing." },
+    { id: "6FURuLYrR_Q", title: "Choo Lo", artist: "The Local Train", film: "", year: 2015, lang: "Hindi", rotation: "cafe", dur: 248, note: "A slower table-side detour for when the coffee takes its time." },
+    { id: "V-_O7nl0Ii0", title: "Havana", artist: "Camila Cabello", film: "", year: 2017, lang: "English", rotation: "afterglow", dur: 217, note: "Wrong city, right heat. The night will allow it." }
   ]
 };
